@@ -28,7 +28,7 @@ def calculo_CL():
     Vtas = Mach*a
 
     W0 = airplane["inputs"]['W0_guess']
-    W = 0.95*W0
+    W = 0.95*W0 # O EXERCICIO PEDE 95% DE W0
 
     Cl = 2*W/(rho*(Vtas**2)*S_w);
 
