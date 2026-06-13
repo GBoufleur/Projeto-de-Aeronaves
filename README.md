@@ -16,3 +16,8 @@ Este repositório será utilizado para centralizar, principalmente os códigos p
 alternativa de 200 milhas náuticas
 
 - Base de certificação: FAR 25
+
+## Links Úteis
+
+Parâmetros do dicionário
+https://docs.google.com/spreadsheets/d/1eASd5AZlGO9jvF7iO5R604k7WmINToGNr8FI81vQthc/edit?gid=0#gid=0
