@@ -30,7 +30,9 @@ def standard_airplane(name='crusair1'):
               'dihedral_w' : 0.104, # Wing dihedral [rad]
               'xr_w' : 21.905, # Longitudinal position of the wing (with respect to the fuselage nose) [m]
               'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
-              'tcr_w' : 0.13, # t/c of the root section of the wing
+              
+              # SC(2)-0614 e SC(2)-0610
+              'tcr_w' : 0.14, # t/c of the root section of the wing
               'tct_w' : 0.10, # t/c of the tip section of the wing
 
               'Cht' : 0.749, # Horizontal tail volume coefficient
@@ -40,6 +42,8 @@ def standard_airplane(name='crusair1'):
               'sweep_h' : 0.675, # HT sweep [rad]
               'dihedral_h' : 0.128, # HT dihedral [rad]
               'zr_h' : 1.581, # Vertical position of the HT [m]
+
+              # SC(2)-0010
               'tcr_h' : 0.1, # t/c of the root section of the HT
               'tct_h' : 0.1, # t/c of the tip section of the HT
               'eta_h' : 1.0, # Dynamic pressure factor of the HT (0.9 for conventional tail or 1.0 for T-tail)
@@ -160,8 +164,8 @@ def standard_airplane(name='crusair1'):
               'dihedral_w' : 0.104, # Wing dihedral [rad]
               'xr_w' : 21.905, # Longitudinal position of the wing (with respect to the fuselage nose) [m]
               'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
-              'tcr_w' : 0.13, # t/c of the root section of the wing
-              'tct_w' : 0.10, # t/c of the tip section of the wing
+              'tcr_w' : 0.14, # t/c of the root section of the wing
+              'tct_w' : 0.12, # t/c of the tip section of the wing
 
               'Cht' : 0.749, # Horizontal tail volume coefficient
               'Lc_h' : 3.606, # Non-dimensional lever of the horizontal tail (lever/wing_mac)
@@ -170,8 +174,10 @@ def standard_airplane(name='crusair1'):
               'sweep_h' : 0.675, # HT sweep [rad]
               'dihedral_h' : 0.128, # HT dihedral [rad]
               'zr_h' : 1.581, # Vertical position of the HT [m]
-              'tcr_h' : 0.1, # t/c of the root section of the HT
-              'tct_h' : 0.1, # t/c of the tip section of the HT
+
+              # SC(2)-0012
+              'tcr_h' : 0.12, # t/c of the root section of the HT
+              'tct_h' : 0.12, # t/c of the tip section of the HT
               'eta_h' : 1.0, # Dynamic pressure factor of the HT (0.9 for conventional tail or 1.0 for T-tail)
 
               'Cvt' : 0.071, # Vertical tail volume coefficient
