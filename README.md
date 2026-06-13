@@ -6,7 +6,7 @@ Este repositório será utilizado para centralizar, principalmente os códigos p
 
 - Aeronave de transporte de passageiros
 - 320 assentos em 2 classes
-- 
+  
 ## Missão de projeto:
 – Alcance de 8000 nmi, com 320 PAX @ MTOW
 – 100 kg por PAX (já contabilizando bagagem)
