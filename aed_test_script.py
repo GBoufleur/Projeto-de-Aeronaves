@@ -60,6 +60,7 @@ plt.title('CD x Mach - Condição de cruzeiro')
 plt.xlabel('Mach')
 plt.ylabel('CD')
 plt.grid(True, linestyle=':')
+plt.show()
 
 
 # Execute the aerodynamic analysis
