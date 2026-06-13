@@ -258,7 +258,7 @@ def standard_airplane(name='crusair1'):
               'Mach_altcruise' : 0.4, # Alternative cruise Mach number
               'range_altcruise' : 370400.0, # Alternative cruise range [m]
 
-              'W_payload' : 320*91*gravity, # Payload weight for design mission [N]
+              'W_payload' : 320*100*gravity, # Payload weight for design mission [N]
               'xcg_payload' : 14.4, # Longitudinal position of the Payload center of gravity [m]
               'W_maxpayload' : 11242*gravity, # Maximum payload weight [N]
 
