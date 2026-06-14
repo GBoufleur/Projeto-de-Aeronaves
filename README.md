@@ -25,3 +25,6 @@ https://docs.google.com/spreadsheets/d/1eASd5AZlGO9jvF7iO5R604k7WmINToGNr8FI81vQ
 Parâmetros outras aeronaves
 https://docs.google.com/spreadsheets/d/1C5BGIsJxcCnnnig-ROW-4SqIS2I72-Cs4U-o0WiEx-M/edit?usp=sharing
 
+link prism
+https://prism.openai.com/?u=146f95c8-412f-4600-9173-1110e3988fb7&pg=1&m=main.tex
+
