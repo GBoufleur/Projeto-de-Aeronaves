@@ -11,15 +11,17 @@ from designTool.auxiliary import atmosphere
 import matplotlib.pyplot as plt
 
 # Load a sample case already defined in designTools.py:
-airplane = standard_airplane('crusair2')
+airplane = standard_airplane('crusair1')
+airplane2 = standard_airplane('crusair2')
 
 # Execute the geometry function
 geometry(airplane)
+geometry(airplane2)
 
 # Calculando o CL
 # Considerando cruzeiro (L = W)
 # CL = 2W/(rho*V^2*S)
-def calculo_CL():
+def calculo_CL(airplane):
     S_w = airplane['inputs']['S_w']
     alt = airplane["inputs"]['altitude_cruise']
     atm = atmosphere(alt)
@@ -38,7 +40,11 @@ def calculo_CL():
     return CL
 
 # Cruise conditions for aerodynamic analysis
-CL =  calculo_CL()
+
+# CALCULO DOS DOIS CLs
+CL =  calculo_CL(airplane)
+CL2 = calculo_CL(airplane2)
+
 Mach = airplane["inputs"]['Mach_cruise']
 altitude = airplane["inputs"]['altitude_cruise']
 n_engines_failed = 0.00000000000000
