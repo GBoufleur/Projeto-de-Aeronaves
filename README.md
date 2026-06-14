@@ -21,3 +21,7 @@ alternativa de 200 milhas náuticas
 
 Parâmetros do dicionário
 https://docs.google.com/spreadsheets/d/1eASd5AZlGO9jvF7iO5R604k7WmINToGNr8FI81vQthc/edit?gid=0#gid=0
+
+Parâmetros outras aeronaves
+https://docs.google.com/spreadsheets/d/1C5BGIsJxcCnnnig-ROW-4SqIS2I72-Cs4U-o0WiEx-M/edit?usp=sharing
+
