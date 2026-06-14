@@ -30,7 +30,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'dihedral_w' : 7*np.pi/180, # Wing dihedral [rad]
               'xr_w' : 22.07, # Longitudinal position of the wing (with respect to the fuselage nose) [m]
               'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
-              'tcr_w' : 0.13, # t/c of the root section of the wing
+              'tcr_w' : 0.14, # t/c of the root section of the wing
               'tct_w' : 0.10, # t/c of the tip section of the wing
 
               'Cht' : 0.6, # Horizontal tail volume coefficient
@@ -40,6 +40,8 @@ def standard_airplane(name='crusair1'): # crusair 333
               'sweep_h' : 39*np.pi/180, # HT sweep [rad]
               'dihedral_h' : 8*np.pi/180, # HT dihedral [rad]
               'zr_h' : 1.581, # Vertical position of the HT [m]
+
+              # NACA 0010
               'tcr_h' : 0.1, # t/c of the root section of the HT
               'tct_h' : 0.1, # t/c of the tip section of the HT
               'eta_h' : 0.9, # Dynamic pressure factor of the HT (0.9 for conventional tail or 1.0 for T-tail)
@@ -50,6 +52,8 @@ def standard_airplane(name='crusair1'): # crusair 333
               'taper_v' : 0.35, # VT taper ratio
               'sweep_v' : 41*np.pi/180, # VT sweep [rad]
               'zr_v' : 3.087, # Vertical position of the VT [m]
+
+              # NACA 0012
               'tcr_v' : 0.12, # t/c of the root section of the VT
               'tct_v' : 0.12, # t/c of the tip section of the VT
 
@@ -158,7 +162,11 @@ def standard_airplane(name='crusair1'): # crusair 333
               'dihedral_w' : 6*np.pi/180, # Wing dihedral [rad]
               'xr_w' : 22.07, # Longitudinal position of the wing (with respect to the fuselage nose) [m]
               'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
-              'tcr_w' : 0.13, # t/c of the root section of the wing
+
+                # SC(2)-0614
+              'tcr_w' : 0.14, # t/c of the root section of the wing
+
+                # SC(2)-0610
               'tct_w' : 0.10, # t/c of the tip section of the wing
 
               'Cht' : 0.6, # Horizontal tail volume coefficient
@@ -178,6 +186,8 @@ def standard_airplane(name='crusair1'): # crusair 333
               'taper_v' : 0.35, # VT taper ratio
               'sweep_v' : 41*np.pi/180, # VT sweep [rad]
               'zr_v' : 3.087, # Vertical position of the VT [m]
+
+              # NACA 0012
               'tcr_v' : 0.12, # t/c of the root section of the VT
               'tct_v' : 0.12, # t/c of the tip section of the VT
 
