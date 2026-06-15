@@ -159,3 +159,176 @@ print("CLmax = ",CLmax)
 print("dragDict = " + pprint.pformat(dragDict))
 print("")
 
+
+# ============================================================
+# ITEM 5 
+
+CL_min = -0.5
+n_points = 120
+
+
+S_w = airplane["inputs"]["S_w"]
+W0 = airplane["inputs"]["W0_guess"]
+MLW_frac = airplane["inputs"]["MLW_frac"]
+
+altitude_takeoff = airplane["inputs"]["altitude_takeoff"]
+altitude_landing = airplane["inputs"]["altitude_landing"]
+
+deltaISA_takeoff = airplane["inputs"].get("deltaISA_takeoff", 0.0)
+deltaISA_landing = airplane["inputs"].get("deltaISA_landing", 0.0)
+
+atm_takeoff = atmosphere(altitude_takeoff, deltaISA_takeoff)
+rho_takeoff = atm_takeoff["density"]
+a_takeoff = atm_takeoff["speed_of_sound"]
+
+atm_landing = atmosphere(altitude_landing, deltaISA_landing)
+rho_landing = atm_landing["density"]
+a_landing = atm_landing["speed_of_sound"]
+
+# 1. Cruzeiro
+
+
+Mach_cruise = airplane["inputs"]["Mach_cruise"]
+altitude_cruise = airplane["inputs"]["altitude_cruise"]
+
+_, CLmax_cruise, _ = aerodynamics(
+    airplane,
+    Mach_cruise,
+    altitude_cruise,
+    CL=0.5,
+    n_engines_failed=0,
+    highlift_config="clean",
+    lg_down=0,
+    h_ground=0
+)
+
+# 2. Subida de decolagem
+
+
+_, CLmax_takeoff, _ = aerodynamics(
+    airplane,
+    Mach=0.30,
+    altitude=altitude_takeoff,
+    CL=0.5,
+    n_engines_failed=1,
+    highlift_config="takeoff",
+    lg_down=0,
+    h_ground=0
+)
+
+CL_takeoff_climb = CLmax_takeoff / 1.2**2
+
+W_takeoff = W0
+
+Vstall_takeoff = np.sqrt(
+    2 * W_takeoff / (rho_takeoff * S_w * CLmax_takeoff)
+)
+
+V_takeoff_climb = 1.2 * Vstall_takeoff
+Mach_takeoff_climb = V_takeoff_climb / a_takeoff
+
+# 3. Aproximação
+
+_, CLmax_landing, _ = aerodynamics(
+    airplane,
+    Mach=0.30,
+    altitude=altitude_landing,
+    CL=0.5,
+    n_engines_failed=0,
+    highlift_config="landing",
+    lg_down=1,
+    h_ground=0
+)
+
+CL_approach = CLmax_landing / 1.3**2
+
+W_landing = MLW_frac * W0
+
+Vstall_landing = np.sqrt(
+    2 * W_landing / (rho_landing * S_w * CLmax_landing)
+)
+
+V_approach = 1.3 * Vstall_landing
+Mach_approach = V_approach / a_landing
+
+#
+
+polar_cases = [
+    {
+        "label": "Cruzeiro",
+        "Mach": Mach_cruise,
+        "altitude": altitude_cruise,
+        "CLmax": CLmax_cruise,
+        "n_engines_failed": 0,
+        "highlift_config": "clean",
+        "lg_down": 0,
+        "h_ground": 0
+    },
+    {
+        "label": "Subida de decolagem",
+        "Mach": Mach_takeoff_climb,
+        "altitude": altitude_takeoff,
+        "CLmax": CLmax_takeoff,
+        "n_engines_failed": 1,
+        "highlift_config": "takeoff",
+        "lg_down": 0,
+        "h_ground": 0
+    },
+    {
+        "label": "Aproximação",
+        "Mach": Mach_approach,
+        "altitude": altitude_landing,
+        "CLmax": CLmax_landing,
+        "n_engines_failed": 0,
+        "highlift_config": "landing",
+        "lg_down": 1,
+        "h_ground": 0
+    }
+]
+
+#
+
+plt.figure(figsize=(8, 6))
+
+for case in polar_cases:
+
+    CL_vec = np.linspace(CL_min, case["CLmax"], n_points)
+    CD_vec = np.zeros_like(CL_vec)
+
+    for i, CL_i in enumerate(CL_vec):
+
+        CD_i, _, _ = aerodynamics(
+            airplane,
+            case["Mach"],
+            case["altitude"],
+            CL_i,
+            n_engines_failed=case["n_engines_failed"],
+            highlift_config=case["highlift_config"],
+            lg_down=case["lg_down"],
+            h_ground=case["h_ground"]
+        )
+
+        CD_vec[i] = CD_i
+
+    plt.plot(CD_vec, CL_vec, label=case["label"])
+
+    print("")
+    print(case["label"])
+    print("Mach =", case["Mach"])
+    print("Altitude =", case["altitude"])
+    print("Configuração HLD =", case["highlift_config"])
+    print("Trem de pouso baixado =", case["lg_down"])
+    print("Motores inoperantes =", case["n_engines_failed"])
+    print("Efeito solo h_ground =", case["h_ground"])
+    print("CLmax =", case["CLmax"])
+
+plt.xlabel(r"$C_D$", fontsize=14)
+plt.ylabel(r"$C_L$", fontsize=14)
+plt.title("Polares de arrasto", fontsize=16)
+plt.grid(True)
+plt.legend(fontsize=12)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+plt.tight_layout()
+plt.savefig("item5_polares_de_arrasto.png", dpi=300)
+plt.show()
