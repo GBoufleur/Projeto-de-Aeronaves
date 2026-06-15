@@ -53,7 +53,7 @@ lg_down = 0.00000000000000
 h_ground = 0.00000000000000
 
 # Grafico CD vs Mach
-Mach_vector = np.arange(0.6,0.9,0.01)
+Mach_vector = np.arange(0.6,0.9,0.001)
 CD_vector = []
 for Mach_i in Mach_vector:
     CD,_,_ = aerodynamics(airplane, Mach_i, altitude, CL,
@@ -61,13 +61,28 @@ for Mach_i in Mach_vector:
                                        lg_down=lg_down, h_ground=h_ground)
     CD_vector.append(CD)
     
-plt.plot(Mach_vector, CD_vector, 'r-')
+plt.plot(Mach_vector, CD_vector, 'k-',label= 'CD')
 plt.title('CD x Mach - Condição de cruzeiro')
 plt.xlabel('Mach')
 plt.ylabel('CD')
 plt.grid(True, linestyle=':')
-plt.show()
+CD_cruise,_,CD_Mdd_dict = aerodynamics(airplane, 0.85, altitude, CL,
+                                   n_engines_failed=n_engines_failed, highlift_config=highlift_config,
+                                   lg_down=lg_down, h_ground=h_ground)
+plt.scatter(0.85, CD_cruise, color='red', s=30, zorder=2, label=f'Requisito: CD={CD_cruise:.4f} ,M=0.85')
+plt.axhline(y=CD_cruise, color='red', linestyle='--', alpha=0.3)
+plt.axvline(x=0.85, color='red', linestyle='--', alpha=0.3)
 
+
+CD_Mdd,_,_ = aerodynamics(airplane, CD_Mdd_dict['Mach_dd'], altitude, CL,
+                                   n_engines_failed=n_engines_failed, highlift_config=highlift_config,
+                                   lg_down=lg_down, h_ground=h_ground)
+plt.scatter(CD_Mdd_dict['Mach_dd'], CD_Mdd, color='blue', s=30, zorder=2, label=f'M divergência: CD={CD_Mdd:.4f} ,M={CD_Mdd_dict['Mach_dd']:.4f}')
+plt.axhline(y=CD_Mdd, color='blue', linestyle='--', alpha=0.3)
+plt.axvline(x=CD_Mdd_dict['Mach_dd'], color='blue', linestyle='--', alpha=0.3)
+
+plt.legend(bbox_to_anchor=(+0.5, -0.4),loc='lower center', shadow=False, fontsize='small')
+plt.show()
 
 # Execute the aerodynamic analysis
 CD, CLmax, dragDict = aerodynamics(airplane, Mach, altitude, CL,

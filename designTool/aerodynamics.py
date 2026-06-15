@@ -276,12 +276,11 @@ def aerodynamics(airplane, Mach, altitude, CL,
 
         Mach_dd = k_korn/np.cos(sweep_50) - tcm_w/np.cos(sweep_50)**2 - CL/10/np.cos(sweep_50)**3
         Mach_crit = Mach_dd - (0.1/80)**(1/3)
-
         CDwave = 20*max(0, Mach - Mach_crit)**4
         
     else:
         CDwave = 0.0
-
+        Mach_dd = 0.0
     ### HIGH LIFT DEVICES
 
     ### Clean wing CLmax (Raymer Eq. 5.7)
@@ -497,7 +496,8 @@ def aerodynamics(airplane, Mach, altitude, CL,
                 'CLmax' : CLmax,
                 'K' : K,
                 'e' : ee,
-                'Swet' : Swet}
+                'Swet' : Swet,
+                'Mach_dd' : Mach_dd}
 
     # Update dictionary
     airplane['aerodynamics'] = {}
