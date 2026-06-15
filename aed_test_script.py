@@ -332,3 +332,59 @@ plt.yticks(fontsize=12)
 plt.tight_layout()
 plt.savefig("item5_polares_de_arrasto.png", dpi=300)
 plt.show()
+# ============================================================
+# ITEM 6
+# ============================================================
+
+print("\n")
+print("="*60)
+print("ITEM 6 - CONDICAO DE CRUZEIRO")
+print("="*60)
+
+CL_cruise = calculo_CL(airplane)
+
+CD_cruise, CLmax_cruise, dragDict_cruise = aerodynamics(
+    airplane,
+    Mach_cruise,
+    altitude_cruise,
+    CL_cruise,
+    n_engines_failed=0,
+    highlift_config="clean",
+    lg_down=0,
+    h_ground=0
+)
+
+print("CL_cruise =", CL_cruise)
+print("CD_cruise =", CD_cruise)
+print("CLmax_cruise =", CLmax_cruise)
+
+# ============================================================
+# ITEM 7
+# ============================================================
+
+print("\n")
+print("="*60)
+print("ITEM 7 - LANDING DRAG BREAKDOWN")
+print("="*60)
+
+CL_landing = CLmax_landing/(1.3**2)
+
+CD_landing, CLmax_landing_final, dragDict_landing = aerodynamics(
+    airplane,
+    Mach_approach,
+    altitude_landing,
+    CL_landing,
+    n_engines_failed=0,
+    highlift_config="landing",
+    lg_down=1,
+    h_ground=0
+)
+
+print("CL_landing =", CL_landing)
+print("CD_landing =", CD_landing)
+print("CLmax_landing =", CLmax_landing_final)
+
+print("\nDRAG BREAKDOWN\n")
+
+for chave, valor in dragDict_landing.items():
+    print(f"{chave}: {valor}")
