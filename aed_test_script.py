@@ -69,7 +69,7 @@ plt.grid(True, linestyle=':')
 CD_cruise,_,CD_Mdd_dict = aerodynamics(airplane, 0.85, altitude, CL,
                                    n_engines_failed=n_engines_failed, highlift_config=highlift_config,
                                    lg_down=lg_down, h_ground=h_ground)
-plt.scatter(0.85, CD_cruise, color='red', s=30, zorder=2, label=f'Requisito: CD={CD_cruise:.4f} ,M=0.85')
+plt.scatter(0.85, CD_cruise, color='red', s=30, zorder=2, label=f'M requisito = 0.85, CD={CD_cruise:.4f}')
 plt.axhline(y=CD_cruise, color='red', linestyle='--', alpha=0.3)
 plt.axvline(x=0.85, color='red', linestyle='--', alpha=0.3)
 
@@ -77,7 +77,7 @@ plt.axvline(x=0.85, color='red', linestyle='--', alpha=0.3)
 CD_Mdd,_,_ = aerodynamics(airplane, CD_Mdd_dict['Mach_dd'], altitude, CL,
                                    n_engines_failed=n_engines_failed, highlift_config=highlift_config,
                                    lg_down=lg_down, h_ground=h_ground)
-plt.scatter(CD_Mdd_dict['Mach_dd'], CD_Mdd, color='blue', s=30, zorder=2, label=f'M divergência: CD={CD_Mdd:.4f} ,M={CD_Mdd_dict['Mach_dd']:.4f}')
+plt.scatter(CD_Mdd_dict['Mach_dd'], CD_Mdd, color='blue', s=30, zorder=2, label=f'M divergência = {CD_Mdd_dict['Mach_dd']:.4f}, CD={CD_Mdd:.4f}')
 plt.axhline(y=CD_Mdd, color='blue', linestyle='--', alpha=0.3)
 plt.axvline(x=CD_Mdd_dict['Mach_dd'], color='blue', linestyle='--', alpha=0.3)
 

@@ -158,7 +158,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'S_w' : 420, # Wing area [m2]
               'AR_w' : 9.7,  # Wing aspect ratio
               'taper_w' : 0.15, # Wing taper ratio
-              'sweep_w' : 31*np.pi/180, # Wing sweep [rad]
+              'sweep_w' : 32*np.pi/180, # Wing sweep [rad]
               'dihedral_w' : 6*np.pi/180, # Wing dihedral [rad]
               'xr_w' : 22.07, # Longitudinal position of the wing (with respect to the fuselage nose) [m]
               'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
@@ -191,9 +191,13 @@ def standard_airplane(name='crusair1'): # crusair 333
               'tcr_v' : 0.12, # t/c of the root section of the VT
               'tct_v' : 0.12, # t/c of the tip section of the VT
 
-              'L_f' : 67.220, # Fuselage length [m]
-              'D_f' : 5.90, # Fuselage diameter [m]
+              #'L_f' : 67.220, # Fuselage length [m]
+              #'D_f' : 5.90, # Fuselage diameter [m]
 
+                
+              'L_f' : 66.820, # Fuselage length [m]
+              'D_f' : 5.610, # Fuselage diameter [m]
+              
               'x_n' : 21.313, # Longitudinal position of the nacelle frontal face [m]
               'y_n' : 9.329, # Lateral position of the nacelle centerline [m]
               'z_n' : -2.6, # Vertical position of the nacelle centerline [m]
@@ -225,7 +229,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'b_tank_b_w_end' : 0.95, # Fraction of the wing semi-span where fuel tank ends
 
               'clmax_w' : 1.8, # Maximum lift coefficient of wing airfoil
-              'k_korn' : 0.91, # Airfoil technology factor for Korn equation (wave drag)
+              'k_korn' : 0.94, # Airfoil technology factor for Korn equation (wave drag)
 
               'flap_type' : 'single slotted',  # Flap type
               'c_flap_c_wing' : 0.147009, # Fraction of the wing chord occupied by flaps
