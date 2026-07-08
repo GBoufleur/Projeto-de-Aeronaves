@@ -29,12 +29,12 @@ def standard_airplane(name='crusair1'): # crusair 333
               'sweep_w' : 32*np.pi/180, # Wing sweep [rad]
               'dihedral_w' : 7*np.pi/180, # Wing dihedral [rad]
               'xr_w' : 22.07, # Longitudinal position of the wing (with respect to the fuselage nose) [m]
-              'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
+              'zr_w' : -2.1, # Vertical position of the wing (with respect to the fuselage nose) [m]
               'tcr_w' : 0.14, # t/c of the root section of the wing
               'tct_w' : 0.10, # t/c of the tip section of the wing
 
               'Cht' : 0.6, # Horizontal tail volume coefficient
-              'Lc_h' : 3.4, # Non-dimensional lever of the horizontal tail (lever/wing_mac)
+              'Lc_h' : 3.7, # Non-dimensional lever of the horizontal tail (lever/wing_mac)
               'AR_h' : 4.817, # HT aspect ratio
               'taper_h' : 0.239, # HT taper ratio
               'sweep_h' : 39*np.pi/180, # HT sweep [rad]
@@ -47,7 +47,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'eta_h' : 0.9, # Dynamic pressure factor of the HT (0.9 for conventional tail or 1.0 for T-tail)
 
               'Cvt' : 0.05, # Vertical tail volume coefficient
-              'Lb_v' : 0.4, # Non-dimensional lever of the vertical tail (lever/wing_span)
+              'Lb_v' : 0.45, # Non-dimensional lever of the vertical tail (lever/wing_span)
               'AR_v' : 1.8, # VT aspect ratio
               'taper_v' : 0.35, # VT taper ratio
               'sweep_v' : 41*np.pi/180, # VT sweep [rad]
@@ -68,21 +68,23 @@ def standard_airplane(name='crusair1'): # crusair 333
 
               'n_engines' : 2, # Number of engines
               'n_engines_under_wing' : 2, # Number of engines installed under the wing
-              'engine' : {'model' : 'Howe turbofan', # Check engineTSFC function for options
-                          #'model' : 'Raymer turbofan', # Check engineTSFC function for options
-                          'BPR' : 3.04, # Engine bypass ratio
-                          #'weight' : 1500*gravity, # Single engine weight [N] (Can also be omitted to let designTool estimate it)
-                          #'Tmax' : 13850*lb2N, # Single engine maximum thrust at sea level [N] (Can also be omitted to let designTool estimate it)
-                          'C_ref' : 0.70/3600, # Reference thrust-specific fuel consumption [1/s] (Can also be omitted to let designTool estimate it)
-                          'altitude_ref': 35000*ft2m, # Altitude that corresponds to the given TSFC [m]
-                          'Mach_ref': 0.73, # Mach that corresponds to the given TSFC
-                          },
+
+                'engine' : {'model' : 'Howe turbofan', # Modelo interno usado pelo designTool
+                            # Motor de referência física: Rolls-Royce Trent XWB-84
+
+                            'BPR' : 9.6, # Engine bypass ratio [-]
+                            'weight' : 7277*gravity, # Single engine dry weight [N]
+                            'Tmax' : 84200*lb2N, # Single engine maximum thrust at sea level [N]
+                            'C_ref' : 0.48/3600, # Reference TSFC [1/s]
+                            'altitude_ref': 35000*ft2m, # Reference altitude for TSFC [m]
+                            'Mach_ref': 0.85, # Reference Mach number for TSFC
+              },
 
               'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
               'x_mlg' : 33.54, # Longitudinal position of the main landing gear [m]
               'y_mlg' : 4.898, # Lateral position of the main landing gear [m]
-              'z_lg' : -3.939, # Vertical position of the landing gear [m]
-              'x_tailstrike' : 55.946, # Longitudinal position of critical tailstrike point [m]
+              'z_lg' : -5.1, # Vertical position of the landing gear [m]
+              'x_tailstrike' : 48.946, # Longitudinal position of critical tailstrike point [m]
               'z_tailstrike' : -2.9, # Vertical position of critical tailstrike point [m]
 
               'c_tank_c_w' : 0.4, # Fraction of the wing chord occupied by the fuel tank
@@ -94,10 +96,12 @@ def standard_airplane(name='crusair1'): # crusair 333
               'k_korn' : 0.94, # Airfoil technology factor for Korn equation (wave drag)
 
               'flap_type' : 'single slotted',  # Flap type
+
               'c_flap_c_wing' : 0.146396, # Fraction of the wing chord occupied by flaps
               'b_flap_b_wing' : 0.547787, # Fraction of the wing span occupied by flaps (including fuselage portion)
 
-              'slat_type' : 'flap', # Slat type
+
+              'slat_type' : 'Leading Edge Slats', # Slat type
               'c_slat_c_wing' : 0.152007, # Fraction of the wing chord occupied by slats
               'b_slat_b_wing' : 0.740334, # Fraction of the wing span occupied by slats
 
@@ -158,10 +162,10 @@ def standard_airplane(name='crusair1'): # crusair 333
               'S_w' : 420, # Wing area [m2]
               'AR_w' : 9.7,  # Wing aspect ratio
               'taper_w' : 0.15, # Wing taper ratio
-              'sweep_w' : 31*np.pi/180, # Wing sweep [rad]
+              'sweep_w' : 32*np.pi/180, # Wing sweep [rad]
               'dihedral_w' : 6*np.pi/180, # Wing dihedral [rad]
               'xr_w' : 22.07, # Longitudinal position of the wing (with respect to the fuselage nose) [m]
-              'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
+              'zr_w' : -2.1, # Vertical position of the wing (with respect to the fuselage nose) [m]
 
                 # SC(2)-0614
               'tcr_w' : 0.14, # t/c of the root section of the wing
@@ -181,7 +185,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'eta_h' : 0.9, # Dynamic pressure factor of the HT (0.9 for conventional tail or 1.0 for T-tail)
 
               'Cvt' : 0.05, # Vertical tail volume coefficient
-              'Lb_v' : 0.47, # Non-dimensional lever of the vertical tail (lever/wing_span)
+              'Lb_v' : 0.48, # Non-dimensional lever of the vertical tail (lever/wing_span)
               'AR_v' : 1.8, # VT aspect ratio
               'taper_v' : 0.35, # VT taper ratio
               'sweep_v' : 41*np.pi/180, # VT sweep [rad]
@@ -193,7 +197,10 @@ def standard_airplane(name='crusair1'): # crusair 333
 
               'L_f' : 67.220, # Fuselage length [m]
               'D_f' : 5.90, # Fuselage diameter [m]
-
+                
+              #'L_f' : 66.820, # Fuselage length [m]
+              #'D_f' : 5.610, # Fuselage diameter [m]
+              
               'x_n' : 21.313, # Longitudinal position of the nacelle frontal face [m]
               'y_n' : 9.329, # Lateral position of the nacelle centerline [m]
               'z_n' : -2.6, # Vertical position of the nacelle centerline [m]
@@ -202,21 +209,23 @@ def standard_airplane(name='crusair1'): # crusair 333
 
               'n_engines' : 2, # Number of engines
               'n_engines_under_wing' : 2, # Number of engines installed under the wing
-              'engine' : {'model' : 'Howe turbofan', # Check engineTSFC function for options
-                          #'model' : 'Raymer turbofan', # Check engineTSFC function for options
-                          'BPR' : 3.04, # Engine bypass ratio
-                          #'weight' : 1500*gravity, # Single engine weight [N] (Can also be omitted to let designTool estimate it)
-                          #'Tmax' : 13850*lb2N, # Single engine maximum thrust at sea level [N] (Can also be omitted to let designTool estimate it)
-                          'C_ref' : 0.70/3600, # Reference thrust-specific fuel consumption [1/s] (Can also be omitted to let designTool estimate it)
-                          'altitude_ref': 35000*ft2m, # Altitude that corresponds to the given TSFC [m]
-                          'Mach_ref': 0.73, # Mach that corresponds to the given TSFC
-                          },
+
+              'engine' : {'model' : 'Howe turbofan', # Modelo interno usado pelo designTool
+                          # Motor de referência física: GE Aerospace GEnx-1B74/75
+
+                          'BPR' : 8.8, # Engine bypass ratio [-]
+                          'weight' : 6147.1*gravity, # Single engine dry weight [N]
+                          'Tmax' : 74100*lb2N, # Single engine maximum thrust at sea level [N]
+                          'C_ref' : 0.53/3600, # Reference TSFC [1/s]
+                          'altitude_ref': 35000*ft2m, # Reference altitude for TSFC [m]
+                          'Mach_ref': 0.85, # Reference Mach number for TSFC
+              },
 
               'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
               'x_mlg' : 33.54, # Longitudinal position of the main landing gear [m]
               'y_mlg' : 4.898, # Lateral position of the main landing gear [m]
-              'z_lg' : -3.939, # Vertical position of the landing gear [m]
-              'x_tailstrike' : 55.946, # Longitudinal position of critical tailstrike point [m]
+              'z_lg' : -5.1, # Vertical position of the landing gear [m]
+              'x_tailstrike' : 50.946, # Longitudinal position of critical tailstrike point [m]
               'z_tailstrike' : -2.9, # Vertical position of critical tailstrike point [m]
 
               'c_tank_c_w' : 0.4, # Fraction of the wing chord occupied by the fuel tank
@@ -231,7 +240,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'c_flap_c_wing' : 0.146396, # Fraction of the wing chord occupied by flaps
               'b_flap_b_wing' : 0.547787, # Fraction of the wing span occupied by flaps (including fuselage portion)
 
-              'slat_type' : 'flap', # Slat type
+              'slat_type' : 'Leading Edge Slats', # Slat type
               'c_slat_c_wing' : 0.152007, # Fraction of the wing chord occupied by slats
               'b_slat_b_wing' : 0.740334, # Fraction of the wing span occupied by slats
 
@@ -241,7 +250,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'h_ground' : 10.668, # Distance to the ground for ground effect computation [m]
               'k_exc_drag' : 0.06, # Excrescence drag factor applied to systems (Torenbeek Tab F-5.7)
 
-              'winglet' : False, # Add winglet
+              'winglet' : False, # Add winglet (adicionaremos raked wingtip no final do projeto)
 
               'altitude_takeoff' : 0.0, # Altitude for takeoff computation [m]
               'distance_takeoff' : 2900.0, # Required takeoff distance [m]
