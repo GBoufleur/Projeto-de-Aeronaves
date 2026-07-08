@@ -9,14 +9,14 @@ import numpy as np
 import pprint
 
 # Load a sample case already defined in designTools.py:
-airplane = standard_airplane('crusair1')
+airplane = standard_airplane('crusair2')
 
 # Execute the geometry function
 geometry(airplane)
 
 # Guess values for initial iteration
-W0_guess = 2609040.00000000000000
-T0_guess = 140250.00000000000000
+W0_guess = 260904
+T0_guess = 240250
 
 # Execute the weight estimation
 W0, W_empty, W_fuel, W_cruise = weight(W0_guess, T0_guess, airplane)
