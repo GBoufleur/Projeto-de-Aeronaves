@@ -289,7 +289,7 @@ def standard_airplane(name='crusair1'): # crusair 333
 
               'rho_fuel' : 804, # Fuel density kg/m3 (This is Jet A-1)
 
-              'W0_guess' : 280000*gravity, # Guess for MTOW
+              'W0_guess' : 260904*gravity, # Guess for MTOW
 
               'We_fudge' : 0.95 # Fudge factor to adjust empty weight
               }
