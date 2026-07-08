@@ -68,15 +68,17 @@ def standard_airplane(name='crusair1'): # crusair 333
 
               'n_engines' : 2, # Number of engines
               'n_engines_under_wing' : 2, # Number of engines installed under the wing
-              'engine' : {'model' : 'Howe turbofan', # Check engineTSFC function for options
-                          #'model' : 'Raymer turbofan', # Check engineTSFC function for options
-                          'BPR' : 3.04, # Engine bypass ratio
-                          #'weight' : 1500*gravity, # Single engine weight [N] (Can also be omitted to let designTool estimate it)
-                          #'Tmax' : 13850*lb2N, # Single engine maximum thrust at sea level [N] (Can also be omitted to let designTool estimate it)
-                          'C_ref' : 0.70/3600, # Reference thrust-specific fuel consumption [1/s] (Can also be omitted to let designTool estimate it)
-                          'altitude_ref': 35000*ft2m, # Altitude that corresponds to the given TSFC [m]
-                          'Mach_ref': 0.73, # Mach that corresponds to the given TSFC
-                          },
+
+                'engine' : {'model' : 'Howe turbofan', # Modelo interno usado pelo designTool
+                            # Motor de referência física: Rolls-Royce Trent XWB-84
+
+                            'BPR' : 9.6, # Engine bypass ratio [-]
+                            'weight' : 7277*gravity, # Single engine dry weight [N]
+                            'Tmax' : 84200*lb2N, # Single engine maximum thrust at sea level [N]
+                            'C_ref' : 0.48/3600, # Reference TSFC [1/s]
+                            'altitude_ref': 35000*ft2m, # Reference altitude for TSFC [m]
+                            'Mach_ref': 0.85, # Reference Mach number for TSFC
+              },
 
               'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
               'x_mlg' : 33.54, # Longitudinal position of the main landing gear [m]
@@ -205,15 +207,17 @@ def standard_airplane(name='crusair1'): # crusair 333
 
               'n_engines' : 2, # Number of engines
               'n_engines_under_wing' : 2, # Number of engines installed under the wing
-              'engine' : {'model' : 'Howe turbofan', # Check engineTSFC function for options
-                          #'model' : 'Raymer turbofan', # Check engineTSFC function for options
-                          'BPR' : 3.04, # Engine bypass ratio
-                          #'weight' : 1500*gravity, # Single engine weight [N] (Can also be omitted to let designTool estimate it)
-                          #'Tmax' : 13850*lb2N, # Single engine maximum thrust at sea level [N] (Can also be omitted to let designTool estimate it)
-                          'C_ref' : 0.70/3600, # Reference thrust-specific fuel consumption [1/s] (Can also be omitted to let designTool estimate it)
-                          'altitude_ref': 35000*ft2m, # Altitude that corresponds to the given TSFC [m]
-                          'Mach_ref': 0.73, # Mach that corresponds to the given TSFC
-                          },
+
+              'engine' : {'model' : 'Howe turbofan', # Modelo interno usado pelo designTool
+                          # Motor de referência física: GE Aerospace GEnx-1B74/75
+
+                          'BPR' : 8.8, # Engine bypass ratio [-]
+                          'weight' : 6147.1*gravity, # Single engine dry weight [N]
+                          'Tmax' : 74100*lb2N, # Single engine maximum thrust at sea level [N]
+                          'C_ref' : 0.53/3600, # Reference TSFC [1/s]
+                          'altitude_ref': 35000*ft2m, # Reference altitude for TSFC [m]
+                          'Mach_ref': 0.85, # Reference Mach number for TSFC
+              },
 
               'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
               'x_mlg' : 33.54, # Longitudinal position of the main landing gear [m]
