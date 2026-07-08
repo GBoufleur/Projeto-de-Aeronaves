@@ -90,12 +90,12 @@ def standard_airplane(name='crusair1'): # crusair 333
               'b_tank_b_w_start' : 0.0, # Fraction of the wing semi-span where fuel tank starts
               'b_tank_b_w_end' : 0.95, # Fraction of the wing semi-span where fuel tank ends
 
-              'clmax_w' : 1.8, # Maximum lift coefficient of wing airfoil
+              'clmax_w' : 1.64, # Maximum lift coefficient of wing airfoil
               'k_korn' : 0.94, # Airfoil technology factor for Korn equation (wave drag)
 
               'flap_type' : 'single slotted',  # Flap type
-              'c_flap_c_wing' : 0.147009, # Fraction of the wing chord occupied by flaps
-              'b_flap_b_wing' : 0.533343, # Fraction of the wing span occupied by flaps (including fuselage portion)
+              'c_flap_c_wing' : 0.146396, # Fraction of the wing chord occupied by flaps
+              'b_flap_b_wing' : 0.547787, # Fraction of the wing span occupied by flaps (including fuselage portion)
 
               'slat_type' : 'flap', # Slat type
               'c_slat_c_wing' : 0.152007, # Fraction of the wing chord occupied by slats
@@ -136,7 +136,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'xcg_payload' : 14.4, # Longitudinal position of the Payload center of gravity [m]
               'W_maxpayload' : 11242*gravity, # Maximum payload weight [N]
 
-              'W_crew' : 5*91*gravity, # Crew weight [N]
+              'W_crew' : 9*100*gravity, # Crew weight [N]
               'xcg_crew' : 2.5, # Longitudinal position of the Crew center of gravity [m]
 
               'block_range' : 400*nm2m, # Block range [m]
@@ -146,9 +146,9 @@ def standard_airplane(name='crusair1'): # crusair 333
 
               'rho_fuel' : 804, # Fuel density kg/m3 (This is Jet A-1)
 
-              'W0_guess' : 280000*gravity, # Guess for MTOW
+              'W0_guess' : 260904*gravity, # Guess for MTOW
 
-              'We_fudge' : 1000 # Fudge factor to adjust empty weight
+              'We_fudge' : 0.95 # Fudge factor to adjust empty weight
               }
         
     elif name == 'crusair2': #crusair 242
@@ -224,12 +224,12 @@ def standard_airplane(name='crusair1'): # crusair 333
               'b_tank_b_w_start' : 0.0, # Fraction of the wing semi-span where fuel tank starts
               'b_tank_b_w_end' : 0.95, # Fraction of the wing semi-span where fuel tank ends
 
-              'clmax_w' : 1.8, # Maximum lift coefficient of wing airfoil
-              'k_korn' : 0.91, # Airfoil technology factor for Korn equation (wave drag)
+              'clmax_w' : 1.64, # Maximum lift coefficient of wing airfoil
+              'k_korn' : 0.94, # Airfoil technology factor for Korn equation (wave drag)
 
               'flap_type' : 'single slotted',  # Flap type
-              'c_flap_c_wing' : 0.147009, # Fraction of the wing chord occupied by flaps
-              'b_flap_b_wing' : 0.533343, # Fraction of the wing span occupied by flaps (including fuselage portion)
+              'c_flap_c_wing' : 0.146396, # Fraction of the wing chord occupied by flaps
+              'b_flap_b_wing' : 0.547787, # Fraction of the wing span occupied by flaps (including fuselage portion)
 
               'slat_type' : 'flap', # Slat type
               'c_slat_c_wing' : 0.152007, # Fraction of the wing chord occupied by slats
@@ -270,7 +270,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'xcg_payload' : 14.4, # Longitudinal position of the Payload center of gravity [m]
               'W_maxpayload' : 11242*gravity, # Maximum payload weight [N]
 
-              'W_crew' : 5*91*gravity, # Crew weight [N]
+              'W_crew' : 9*100*gravity, # Crew weight [N]
               'xcg_crew' : 2.5, # Longitudinal position of the Crew center of gravity [m]
 
               'block_range' : 400*nm2m, # Block range [m]
@@ -282,7 +282,7 @@ def standard_airplane(name='crusair1'): # crusair 333
 
               'W0_guess' : 280000*gravity, # Guess for MTOW
 
-              'We_fudge' : 1000 # Fudge factor to adjust empty weight
+              'We_fudge' : 0.95 # Fudge factor to adjust empty weight
               }
 
     airplane = {'inputs':inputs}
