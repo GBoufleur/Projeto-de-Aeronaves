@@ -16,7 +16,7 @@ from designTool.plot_views import plot_geometry_views
 # SETUP
 
 # Select airplane name from the standard_airplane function in designTool
-airplane_name = 'crusair2'
+airplane_name = 'crusair'
 #airplane_name = 'my_airplane'
 
 #=========================================
