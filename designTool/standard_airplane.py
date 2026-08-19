@@ -83,7 +83,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
               'x_mlg' : 33.54, # Longitudinal position of the main landing gear [m]
               'y_mlg' : 4.898, # Lateral position of the main landing gear [m]
-              'z_lg' : -3.939, # Vertical position of the landing gear [m]
+              'z_lg' : -6, # Vertical position of the landing gear [m]
               'x_tailstrike' : 55.946, # Longitudinal position of critical tailstrike point [m]
               'z_tailstrike' : -2.9, # Vertical position of critical tailstrike point [m]
 
