@@ -85,6 +85,8 @@ def engineTSFC(Mach, altitude, airplane):
         # Cruise traction correction for takeoff conditions by Scholz
         # (https://www.fzt.haw-hamburg.de/pers/Scholz/HOOU/AircraftDesign_5_PreliminarySizing.pdf)
         kT = (0.0013*BPR-0.0397)*altitude/1000.0 - 0.0248*BPR + 0.7125
+        #kT = max(kT, 0.19)
+        #print(kT)
         
         '''
         # Cruise traction correction for takeoff conditions I created
@@ -146,6 +148,32 @@ def engineTSFC(Mach, altitude, airplane):
     # @REMOVE
 
     return C, kT
+
+#----------------------------------------
+
+def lowspeed_thrust_lapse(altitude, deltaISA):
+    '''
+    Thrust lapse factor used for takeoff and takeoff climb conditions.
+    '''
+
+    # Thrust lapse at sea-level conditions according to
+    # Torenbeek, Fig. 4-41 (page 134), curve III
+    kT_deltaISA = min(1.0, 1.0-0.0075*(deltaISA-15))
+
+    # Factor due to external density variation,
+    # as suggested by Raymer.
+    atm_data = atmosphere(0.0, deltaISA)
+    rho_SL = atm_data['density']
+
+    atm_data = atmosphere(altitude, deltaISA)
+    rho = atm_data['density']
+
+    kT_density = rho/rho_SL
+
+    # Overall factor
+    kT = kT_deltaISA*kT_density
+
+    return kT
 
 #----------------------------------------
 

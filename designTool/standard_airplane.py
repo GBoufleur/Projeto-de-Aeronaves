@@ -99,7 +99,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'c_flap_c_wing' : 0.146396, # Fraction of the wing chord occupied by flaps
               'b_flap_b_wing' : 0.547787, # Fraction of the wing span occupied by flaps (including fuselage portion)
 
-              'slat_type' : 'flap', # Slat type
+              'slat_type' : 'slat', # Slat type
               'c_slat_c_wing' : 0.152007, # Fraction of the wing chord occupied by slats
               'b_slat_b_wing' : 0.740334, # Fraction of the wing span occupied by slats
 
@@ -116,16 +116,16 @@ def standard_airplane(name='crusair1'): # crusair 333
               'deltaISA_takeoff' : 0.0, # Variation from ISA standard temperature [ºC]
 
               'altitude_landing' : 0.0, # Altitude for landing computation [m]
-              'distance_landing' : 1900.0, # Required landing distance [m]
+              'distance_landing' : 2000.0, # Required landing distance [m]
               'deltaISA_landing' : 0.0, # Variation from ISA standard temperature [ºC]
-              'MLW_frac' : 40100/43090, # Max Landing Weight / Max Takeoff Weight
+              'MLW_frac' : 0.74, # Max Landing Weight / Max Takeoff Weight
 
               'altitude_cruise' : 10668.0, # Cruise altitude for design mission [m]
               'Mach_cruise' : 0.85, # Cruise Mach number for design mission
-              'range_cruise' : 14445600.0, # Cruise range for design mission [m]
+              'range_cruise' : 8000*nm2m, # Cruise range for design mission [m]
 
               'altitude_maxcruise' : 35000*ft2m, # Altitude for high-speed cruise [m]
-              'Mach_maxcruise' : 0.77, # Mach for high-speed cruise [m]
+              'Mach_maxcruise' : 0.90, # Mach for high-speed cruise [m]
 
               'time_loiter' : 2700.0, # Loiter time [s]
               'altitude_loiter' : 457.2, # Loiter altitude [m]
