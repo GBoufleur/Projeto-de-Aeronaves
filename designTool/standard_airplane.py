@@ -23,8 +23,8 @@ def standard_airplane(name='crusair1'): # crusair 333
         
         inputs = {'type': 'transport', # Can be 'transport', 'fighter', or 'general'
 
-              'S_w' : 450, # Wing area [m2]
-              'AR_w' : 9.3,  # Wing aspect ratio
+              'S_w' : 420, # Wing area [m2]
+              'AR_w' : 10,  # Wing aspect ratio
               'taper_w' : 0.129, # Wing taper ratio
               'sweep_w' : 32*np.pi/180, # Wing sweep [rad]
               'dihedral_w' : 7*np.pi/180, # Wing dihedral [rad]
@@ -96,8 +96,8 @@ def standard_airplane(name='crusair1'): # crusair 333
               'k_korn' : 0.95, # Airfoil technology factor for Korn equation (wave drag)
 
               'flap_type' : 'single slotted',  # Flap type
-              'c_flap_c_wing' : 0.146396, # Fraction of the wing chord occupied by flaps
-              'b_flap_b_wing' : 0.547787, # Fraction of the wing span occupied by flaps (including fuselage portion)
+              'c_flap_c_wing' : 0.25, # Fraction of the wing chord occupied by flaps
+              'b_flap_b_wing' : 0.70, # Fraction of the wing span occupied by flaps (including fuselage portion)
 
               'slat_type' : 'slat', # Slat type
               'c_slat_c_wing' : 0.152007, # Fraction of the wing chord occupied by slats

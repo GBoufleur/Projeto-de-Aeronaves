@@ -154,7 +154,11 @@ def run():
     with (outdir / 'analysis_summary.txt').open('w', encoding='utf-8') as f:
         f.write(f"MLW_frac = {base['MLW_frac']:.4f}\n")
         f.write(f"Landing root MLW = {landing_root:.3f} m2\n")
-        f.write(f"Takeoff/HSC crossover Sw = {crossover:.3f} m2\n")
+        # f.write(f"Takeoff/HSC crossover Sw = {crossover:.3f} m2\n")
+        if crossover is None:
+            f.write("Takeoff/HSC crossover Sw = none in 300-500 m2 range\n")
+        else:
+            f.write(f"Takeoff/HSC crossover Sw = {crossover:.3f} m2\n")
         f.write(f"Minimum 5pct envelope at Sw = {sw[min_i]:.1f} m2, T0 = {design[min_i]:.3f} kN\n")
         f.write(f"Code E upper-area threshold at AR=9.3 = {code_e_sw:.3f} m2\n")
         f.write("Critical intervals:\n")
