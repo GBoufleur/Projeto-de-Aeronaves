@@ -26,7 +26,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'S_w' : 450, # Wing area [m2]
               'AR_w' : 9.3,  # Wing aspect ratio
               'taper_w' : 0.129, # Wing taper ratio
-              'sweep_w' : 32*np.pi/180, # Wing sweep [rad]
+              'sweep_w' : 35*np.pi/180, # Wing sweep [rad]
               'dihedral_w' : 7*np.pi/180, # Wing dihedral [rad]
               'xr_w' : 22.07, # Longitudinal position of the wing (with respect to the fuselage nose) [m]
               'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
@@ -96,8 +96,8 @@ def standard_airplane(name='crusair1'): # crusair 333
               'k_korn' : 0.95, # Airfoil technology factor for Korn equation (wave drag)
 
               'flap_type' : 'single slotted',  # Flap type
-              'c_flap_c_wing' : 0.146396, # Fraction of the wing chord occupied by flaps
-              'b_flap_b_wing' : 0.547787, # Fraction of the wing span occupied by flaps (including fuselage portion)
+              'c_flap_c_wing' : 0.28, # Fraction of the wing chord occupied by flaps
+              'b_flap_b_wing' : 0.70, # Fraction of the wing span occupied by flaps (including fuselage portion)
 
               'slat_type' : 'slat', # Slat type
               'c_slat_c_wing' : 0.152007, # Fraction of the wing chord occupied by slats
@@ -219,7 +219,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
               'x_mlg' : 33.54, # Longitudinal position of the main landing gear [m]
               'y_mlg' : 4.898, # Lateral position of the main landing gear [m]
-              'z_lg' : -3.939, # Vertical position of the landing gear [m]
+              'z_lg' : -6, # Vertical position of the landing gear [m]
               'x_tailstrike' : 55.946, # Longitudinal position of critical tailstrike point [m]
               'z_tailstrike' : -2.9, # Vertical position of critical tailstrike point [m]
 

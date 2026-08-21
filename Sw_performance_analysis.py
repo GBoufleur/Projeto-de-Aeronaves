@@ -108,9 +108,46 @@ def run():
         ax.plot(sw, [r[key] for r in rows], linewidth=1.6, label=key)
     ax.plot(sw, envelope, linewidth=3.0, color='black', label='Envoltória crítica')
     ax.plot(sw, design, linewidth=2.0, color='black', linestyle='--', label='Envoltória + 5%')
+    # Mark selected wing area on the design envelope (+5%)
+    selected_sw = standard_airplane('crusair1')['inputs']['S_w']
+    selected_T0 = np.interp(selected_sw, sw, design)
+
+    ax.scatter(
+        selected_sw,
+        selected_T0,
+        color='darkred',
+        edgecolor='white',
+        linewidth=1.2,
+        s=85,
+        zorder=6,
+        label=rf'Projeto atual ($S_w={selected_sw:.1f}$ m²)'
+    )
+
+    ax.annotate(
+        rf'$T_0={selected_T0:.1f}$ kN',
+        xy=(selected_sw, selected_T0),
+        xytext=(selected_sw + 6, selected_T0 + 35),
+        arrowprops=dict(arrowstyle='->', color='darkred', lw=1.2),
+        color='darkred',
+        fontsize=9,
+        bbox=dict(boxstyle='round,pad=0.25', fc='white', ec='darkred', alpha=0.85)
+    )
     if landing_root is not None:
         ax.axvline(landing_root, color='firebrick', linewidth=2.2, linestyle='--', label=rf'Pouso a MLW ({landing_root:.1f} m²)')
         ax.axvspan(landing_root, sw.max(), color='green', alpha=0.06)
+    ax.axvline(
+        code_e_sw,
+        color='navy',
+        linewidth=2.2,
+        linestyle=':',
+        label=rf'Limite Code E ($b=65$ m, $S_w={code_e_sw:.1f}$ m²)'
+    )
+    ax.axvspan(
+        sw.min(),
+        code_e_sw,
+        color='royalblue',
+        alpha=0.05
+    )
     ax.set_xlabel(r'Área de asa $S_w$ [m²]')
     ax.set_ylabel(r'Tração estática total requerida $T_0$ [kN]')
     ax.set_xlim(300, 500)
@@ -154,7 +191,11 @@ def run():
     with (outdir / 'analysis_summary.txt').open('w', encoding='utf-8') as f:
         f.write(f"MLW_frac = {base['MLW_frac']:.4f}\n")
         f.write(f"Landing root MLW = {landing_root:.3f} m2\n")
-        f.write(f"Takeoff/HSC crossover Sw = {crossover:.3f} m2\n")
+        # f.write(f"Takeoff/HSC crossover Sw = {crossover:.3f} m2\n")
+        if crossover is None:
+            f.write("Takeoff/HSC crossover Sw = none in 300-500 m2 range\n")
+        else:
+            f.write(f"Takeoff/HSC crossover Sw = {crossover:.3f} m2\n")
         f.write(f"Minimum 5pct envelope at Sw = {sw[min_i]:.1f} m2, T0 = {design[min_i]:.3f} kN\n")
         f.write(f"Code E upper-area threshold at AR=9.3 = {code_e_sw:.3f} m2\n")
         f.write("Critical intervals:\n")
