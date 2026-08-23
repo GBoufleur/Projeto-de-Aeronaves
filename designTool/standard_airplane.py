@@ -23,8 +23,8 @@ def standard_airplane(name='crusair1'): # crusair 333
         
         inputs = {'type': 'transport', # Can be 'transport', 'fighter', or 'general'
 
-              'S_w' : 450, # Wing area [m2]
-              'AR_w' : 9.3,  # Wing aspect ratio
+              'S_w' : 455, # Wing area [m2]
+              'AR_w' : 9.28,  # Wing aspect ratio
               'taper_w' : 0.129, # Wing taper ratio
               'sweep_w' : 35*np.pi/180, # Wing sweep [rad]
               'dihedral_w' : 7*np.pi/180, # Wing dihedral [rad]
@@ -57,27 +57,28 @@ def standard_airplane(name='crusair1'): # crusair 333
               'tcr_v' : 0.12, # t/c of the root section of the VT
               'tct_v' : 0.12, # t/c of the tip section of the VT
 
-              'L_f' : 66.820, # Fuselage length [m]
-              'D_f' : 5.610, # Fuselage diameter [m]
+              'L_f' : 65.11, # Fuselage length [m]
+              'D_f' : 5.61, # Fuselage diameter [m]
 
               'x_n' : 21.313, # Longitudinal position of the nacelle frontal face [m]
               'y_n' : 9.329, # Lateral position of the nacelle centerline [m]
               'z_n' : -2.6, # Vertical position of the nacelle centerline [m]
-              'L_n' : 5.736, # Nacelle length [m]
-              'D_n' : 3.887, # Nacelle diameter [m]
+              'L_n' : 5.812, # Nacelle length [m]
+              'D_n' : 3.062, # Nacelle diameter [m]
 
               'n_engines' : 2, # Number of engines
               'n_engines_under_wing' : 2, # Number of engines installed under the wing
 
                 'engine' : {'model' : 'Howe turbofan', # Modelo interno usado pelo designTool
-                            # Motor de referência física: Rolls-Royce Trent XWB-84
+                            # Motor de referência física: Rolls-Royce Trent XWB-97 usado no A350-1000
 
                             'BPR' : 9.6, # Engine bypass ratio [-]
-                            'weight' : 7277*gravity, # Single engine dry weight [N]
-                            'Tmax' : 84200*lb2N, # Single engine maximum thrust at sea level [N]
-                            'C_ref' : 0.48/3600, # Reference TSFC [1/s]
+                            'weight' : 74030.4, # Single engine dry weight [N]
+                            'Tmax' : 431500.0, # Single engine maximum thrust at sea level [N]
+                            'C_ref' : 0.48 / 3600, # Reference TSFC [1/s]
                             'altitude_ref': 35000*ft2m, # Reference altitude for TSFC [m]
                             'Mach_ref': 0.85, # Reference Mach number for TSFC
+
               },
 
               'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
@@ -96,7 +97,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'k_korn' : 0.95, # Airfoil technology factor for Korn equation (wave drag)
 
               'flap_type' : 'single slotted',  # Flap type
-              'c_flap_c_wing' : 0.28, # Fraction of the wing chord occupied by flaps
+              'c_flap_c_wing' : 0.30, # Fraction of the wing chord occupied by flaps
               'b_flap_b_wing' : 0.70, # Fraction of the wing span occupied by flaps (including fuselage portion)
 
               'slat_type' : 'slat', # Slat type
@@ -107,7 +108,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'b_ail_b_wing' : 0.262576, # Fraction of the wing span occupied by aileron
 
               'h_ground' : 10.668, # Distance to the ground for ground effect computation [m]
-              'k_exc_drag' : 0.06, # Excrescence drag factor applied to systems (Torenbeek Tab F-5.7)
+              'k_exc_drag' : 0.03, # Excrescence drag factor applied to systems (Torenbeek Tab F-5.7)
 
               'winglet' : True, # Add winglet
 
@@ -124,8 +125,8 @@ def standard_airplane(name='crusair1'): # crusair 333
               'Mach_cruise' : 0.85, # Cruise Mach number for design mission
               'range_cruise' : 8000*nm2m, # Cruise range for design mission [m]
 
-              'altitude_maxcruise' : 35000*ft2m, # Altitude for high-speed cruise [m]
-              'Mach_maxcruise' : 0.90, # Mach for high-speed cruise [m]
+              'altitude_maxcruise' : 41000*ft2m, # Altitude for high-speed cruise [m]
+              'Mach_maxcruise' : 0.9, # Mach for high-speed cruise [m]
 
               'time_loiter' : 2700.0, # Loiter time [s]
               'altitude_loiter' : 457.2, # Loiter altitude [m]
@@ -193,8 +194,8 @@ def standard_airplane(name='crusair1'): # crusair 333
               'tcr_v' : 0.12, # t/c of the root section of the VT
               'tct_v' : 0.12, # t/c of the tip section of the VT
 
-              'L_f' : 67.220, # Fuselage length [m]
-              'D_f' : 5.90, # Fuselage diameter [m]
+              'L_f' : 65.110, # Fuselage length [m]
+              'D_f' : 5.610, # Fuselage diameter [m]
 
               'x_n' : 21.313, # Longitudinal position of the nacelle frontal face [m]
               'y_n' : 9.329, # Lateral position of the nacelle centerline [m]
