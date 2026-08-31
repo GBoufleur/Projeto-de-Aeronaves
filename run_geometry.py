@@ -31,12 +31,12 @@ airplane = standard_airplane(airplane_name)
 geometry(airplane)
 
 # Plot airplane
-plot_geometry(airplane, figname='3dview.png', az1=45, az2=-135)
+plot_geometry(airplane, figname='Vistas/3dview.png', az1=45, az2=-135)
 
 #Plot airplane from three standard views
-plot_geometry(airplane, figname='3dview_bottom.png', az1=-90, az2=0)
-plot_geometry(airplane, figname='3dview_front.png', az1=0, az2=-90)
-plot_geometry(airplane, figname='3dview_side.png', az1=0, az2=0)
+plot_geometry(airplane, figname='Vistas/3dview_bottom.png', az1=-90, az2=0)
+plot_geometry(airplane, figname='Vistas/3dview_front.png', az1=0, az2=-90)
+plot_geometry(airplane, figname='Vistas/3dview_side.png', az1=0, az2=0)
 
 # Print final dictionary
 print(pprint.pformat(airplane))
