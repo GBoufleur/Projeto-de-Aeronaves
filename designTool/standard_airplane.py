@@ -125,7 +125,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'Mach_cruise' : 0.85, # Cruise Mach number for design mission
               'range_cruise' : 8000*nm2m, # Cruise range for design mission [m]
 
-              'altitude_maxcruise' : 41000*ft2m, # Altitude for high-speed cruise [m]
+              'altitude_maxcruise' : 35000*ft2m, # Altitude for high-speed cruise [m]
               'Mach_maxcruise' : 0.9, # Mach for high-speed cruise [m]
 
               'time_loiter' : 2700.0, # Loiter time [s]
