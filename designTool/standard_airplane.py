@@ -57,8 +57,8 @@ def standard_airplane(name='crusair1'): # crusair 333
               'tcr_v' : 0.12, # t/c of the root section of the VT
               'tct_v' : 0.12, # t/c of the tip section of the VT
 
-              'L_f' : 65.11, # Fuselage length [m]
-              'D_f' : 5.61, # Fuselage diameter [m]
+              'L_f' : 64.9, # Fuselage length [m]
+              'D_f' : 6.1, # Fuselage diameter [m]
 
               'x_n' : 21.313, # Longitudinal position of the nacelle frontal face [m]
               'y_n' : 9.329, # Lateral position of the nacelle centerline [m]
@@ -121,12 +121,12 @@ def standard_airplane(name='crusair1'): # crusair 333
               'deltaISA_landing' : 0.0, # Variation from ISA standard temperature [ºC]
               'MLW_frac' : 0.74, # Max Landing Weight / Max Takeoff Weight
 
-              'altitude_cruise' : 10668.0, # Cruise altitude for design mission [m]
+              'altitude_cruise' : 39000*ft2m, # Cruise altitude for design mission [m]
               'Mach_cruise' : 0.85, # Cruise Mach number for design mission
               'range_cruise' : 8000*nm2m, # Cruise range for design mission [m]
 
-              'altitude_maxcruise' : 35000*ft2m, # Altitude for high-speed cruise [m]
-              'Mach_maxcruise' : 0.9, # Mach for high-speed cruise [m]
+              'altitude_maxcruise' : 36000*ft2m, # Altitude for high-speed cruise [m]
+              'Mach_maxcruise' : 0.87, # Mach for high-speed cruise [m]
 
               'time_loiter' : 2700.0, # Loiter time [s]
               'altitude_loiter' : 457.2, # Loiter altitude [m]
