@@ -417,7 +417,7 @@ def thrust_matching(W0_guess, T0_guess, airplane):
 
         T0 = airplane['inputs']['engine']['Tmax']*airplane['inputs']['n_engines']
 
-        W0, W_empty, W_fuel, W_cruise = weight(W0_guess, T0, airplane)
+        W0, W_payload, W_empty, W_fuel, W_cruise = weight(W0_guess, T0, airplane)
 
         _, T0req, deltaS_wlan, CLmaxTO = performance(W0, W_cruise, airplane)
 
@@ -429,7 +429,7 @@ def thrust_matching(W0_guess, T0_guess, airplane):
         # Loop to adjust T0
         while abs(delta) > 10:
 
-            W0, W_empty, W_fuel, W_cruise = weight(W0_guess, T0_guess, airplane)
+            W0, W_payload, W_empty, W_fuel, W_cruise = weight(W0_guess, T0_guess, airplane)
 
             T0, T0req, deltaS_wlan, CLmaxTO = performance(W0, W_cruise, airplane)
 
@@ -443,6 +443,7 @@ def thrust_matching(W0_guess, T0_guess, airplane):
     # Update dictionary with converged values
     airplane['thrust_matching'] = {}
     airplane['thrust_matching']['W0'] = W0
+    airplane['thrust_matching']['W_payload'] = W_payload
     airplane['thrust_matching']['W_empty'] = W_empty
     airplane['thrust_matching']['W_fuel'] = W_fuel
     airplane['thrust_matching']['T0'] = T0

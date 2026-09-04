@@ -11,9 +11,12 @@ from .auxiliary import atmosphere
 def weight(W0_guess, T0_guess, airplane):
 
     # Unpacking dictionary
-    W_payload = airplane['inputs']['W_payload']
+    payload_groups = airplane['inputs']['payload_groups']
     W_crew = airplane['inputs']['W_crew']
     range_cruise = airplane['inputs']['range_cruise']
+
+    # Sum all payloads
+    W_payload = payload_weight(payload_groups)
 
     # Set iterator
     delta = 1000
@@ -33,7 +36,21 @@ def weight(W0_guess, T0_guess, airplane):
 
         W0_guess = W0
 
-    return W0, W_empty, W_fuel, W_cruise
+    return W0, W_payload, W_empty, W_fuel, W_cruise
+
+#----------------------------------------
+
+def payload_weight(payload_groups):
+    '''
+    Here we sum the weights of all payload groups
+    '''
+
+    W_payload_per_group = np.array(payload_groups['weight'])
+    units_per_group = np.array(payload_groups['units'])
+
+    W_payload = sum(W_payload_per_group*units_per_group)
+
+    return W_payload
 
 #----------------------------------------
 
@@ -83,6 +100,8 @@ def empty_weight(W0_guess, T0_guess, airplane):
     airplane_type = airplane['inputs']['type']
 
     engine = airplane['inputs']['engine']
+
+    We_fudge = airplane['inputs']['We_fudge']
 
     # @REMOVE
 
@@ -140,6 +159,9 @@ def empty_weight(W0_guess, T0_guess, airplane):
         # Otherwise, the optimum would be around AR = 12, which may be too optimistic.
         W_w = 0.0051*(W0_guess*Nz/lb2N)**0.557*(S_w/ft2m**2)**0.649*AR_eff**0.55*tcr_w**(-0.4)*(1+taper_w)**0.1/np.cos(sweep_w)*(Scsw/ft2m**2)**0.1*lb2N
         xcg_w = xm_w + 0.4*cm_w
+
+        # Simplified wing weight (kg/m2) - Raymer Tab 15.2
+        #W_w = 10*S_w/ft2m**2*lb2N
         
         # Surface densities for remaining components (kg/m2) - Raymer Tab 15.2
         W_h_dens = 27
@@ -278,6 +300,16 @@ def empty_weight(W0_guess, T0_guess, airplane):
     W_allelse = W_allelse_fact*W0_guess
     xcg_allelse = 0.45*L_f
 
+    # Apply fudge factors
+    W_w = W_w*We_fudge
+    W_h = W_h*We_fudge
+    W_v = W_v*We_fudge
+    W_f = W_f*We_fudge
+    W_nlg = W_nlg*We_fudge
+    W_mlg = W_mlg*We_fudge
+    W_eng = W_eng_installed*We_fudge
+    W_allelse = W_allelse*We_fudge
+
     # Empty weight
     W_empty = W_w + W_h + W_v + W_f + W_nlg + W_mlg + W_eng_installed + W_allelse
 
@@ -339,8 +371,6 @@ def fuel_weight(W0_guess, airplane, range_cruise, update_Mf_hist=False):
     range_altcruise = airplane['inputs']['range_altcruise']
     
     airplane_type = airplane['inputs']['type']
-
-    # @REMOVE
 
     # Get engine TSFC
     C_cruise,_ = engineTSFC(Mach_cruise, altitude_cruise, airplane)
@@ -447,10 +477,8 @@ def fuel_weight(W0_guess, airplane, range_cruise, update_Mf_hist=False):
     Mf = Mf_start*Mf_taxi*Mf_takeoff*Mf_climb*Mf_cruise*Mf_descent*Mf_altcruise*Mf_loiter*Mf_landing
 
     ### Fuel weight (Raymer Eq 3.13)
-    trapped_fuel_factor = 1.06
+    trapped_fuel_factor = 1.0 # We are already taking reserves into account, thus we will neglect this term
     W_fuel = trapped_fuel_factor*(1-Mf)*W0_guess
-
-    # @REMOVE
 
     # Store the history history of fuel consumed only when requested
     if update_Mf_hist:

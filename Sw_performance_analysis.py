@@ -47,7 +47,7 @@ def run():
         geometry(airplane)
         t_weight = airplane['inputs']['engine']['Tmax'] * airplane['inputs']['n_engines']
         w0_guess = airplane['inputs']['W0_guess']
-        W0, W_empty, W_fuel, W_cruise = weight(w0_guess, t_weight, airplane)
+        W0, W_payload, W_empty, W_fuel, W_cruise = weight(w0_guess, t_weight, airplane)
         T0, T0req, deltaS_wlan, CLmaxTO = performance(W0, W_cruise, airplane)
         _, CLmaxLD, _ = aerodynamics(airplane, Mach=0.2, altitude=airplane['inputs']['altitude_landing'], CL=0.5, n_engines_failed=0, highlift_config='landing', lg_down=1, h_ground=airplane['inputs']['h_ground'])
         atm = atmosphere(airplane['inputs']['altitude_cruise'])
