@@ -1,0 +1,6 @@
+Installed T0 = 863.000 kN
+Best fuel altitude, 50-ft sweep = 37350 ft, Wfuel = 101.248842 t, T0_design_5pct = 769.483570 kN
+Best fuel altitude, 1-ft refined = 37336 ft, Wfuel = 101.248808 t, T0_design_5pct = 768.897492 kN
+37000 ft: Wfuel = 101.268153 t, T0_design_5pct = 755.270491 kN, LD = 22.128935
+39000 ft: Wfuel = 101.788962 t, T0_design_5pct = 850.650884 kN, LD = 21.864873
+Highest feasible altitude in 50-ft sweep = 39200 ft

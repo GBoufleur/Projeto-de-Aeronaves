@@ -107,10 +107,10 @@ def run():
     for key in criteria:
         ax.plot(sw, [r[key] for r in rows], linewidth=1.6, label=key)
     ax.plot(sw, envelope, linewidth=3.0, color='black', label='Envoltória crítica')
-    ax.plot(sw, design, linewidth=2.0, color='black', linestyle='--', label='Envoltória + 5%')
+    #ax.plot(sw, design, linewidth=2.0, color='black', linestyle='--', label='Envoltória + 5%')
     # Mark selected wing area on the design envelope (+5%)
     selected_sw = standard_airplane('crusair1')['inputs']['S_w']
-    selected_T0 = np.interp(selected_sw, sw, design)
+    selected_T0 = np.interp(selected_sw, sw, envelope)
 
     ax.scatter(
         selected_sw,
