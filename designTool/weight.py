@@ -265,7 +265,7 @@ def empty_weight(W0_guess, T0_guess, airplane):
     # Check if LG is active
     if x_nlg is not None:
         
-        W_nlg = 0.15*W0_guess*W_lg_fact
+        W_nlg = 0.23*W0_guess*W_lg_fact
         xcg_nlg = x_nlg
     
         W_mlg = 0.85*W0_guess*W_lg_fact
@@ -298,7 +298,7 @@ def empty_weight(W0_guess, T0_guess, airplane):
 
     # All else weight
     W_allelse = W_allelse_fact*W0_guess
-    xcg_allelse = 0.45*L_f
+    xcg_allelse = 0.48*L_f
 
     # Apply fudge factors
     W_w = W_w*We_fudge
