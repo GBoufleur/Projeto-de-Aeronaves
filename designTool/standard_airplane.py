@@ -23,8 +23,8 @@ def standard_airplane(name='crusair1'): # crusair 333
         
         inputs = {'type': 'transport', # Can be 'transport', 'fighter', or 'general'
 
-              'S_w' : 425, # Wing area [m2]
-              'AR_w' : 9.93,  # Wing aspect ratio
+              'S_w' : 394, # Wing area [m2]
+              'AR_w' : 10.7,  # Wing aspect ratio
               'taper_w' : 0.129, # Wing taper ratio
               'sweep_w' : 33*np.pi/180, # Wing sweep [rad]
               'dihedral_w' : 7*np.pi/180, # Wing dihedral [rad]
@@ -70,13 +70,14 @@ def standard_airplane(name='crusair1'): # crusair 333
               'n_engines_under_wing' : 2, # Number of engines installed under the wing
 
                 'engine' : {'model' : 'Howe turbofan', # Modelo interno usado pelo designTool
-                            # Motor de referência física: Rolls-Royce Trent XWB-97 usado no A350-1000
+                            # Motor de referência física: Rolls-Royce Trent XWB-84 usado no A350-900
 
+                            # Rolls-Royce Trent XWB-84
                             'BPR' : 9.6, # Engine bypass ratio [-]
-                            'weight' : 74030.4, # Single engine dry weight [N]
-                            'Tmax' : 431500.0, # Single engine maximum thrust at sea level [N]
+                            'weight' : 71387.4, # Single engine dry weight [N]
+                            'Tmax' : 374540.1, # Single engine maximum thrust at sea level [N]
                             'C_ref' : 0.48 / 3600, # Reference TSFC [1/s]
-                            'altitude_ref': 35000*ft2m, # Reference altitude for TSFC [m]
+                            'altitude_ref': 37000*ft2m, # Reference altitude for TSFC [m]
                             'Mach_ref': 0.85, # Reference Mach number for TSFC
 
               },
