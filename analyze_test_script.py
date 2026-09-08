@@ -11,4 +11,4 @@ import pprint
 airplane = standard_airplane('crusair1')
 
 # Execute the analysis function
-analyze(airplane, print_log=True, plot=False)
+analyze(airplane, print_log=True, plot=True)

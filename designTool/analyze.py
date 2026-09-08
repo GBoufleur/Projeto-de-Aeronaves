@@ -26,6 +26,7 @@ from .geometry import geometry
 from .performance import thrust_matching
 from .balance import balance
 from .landing_gear import landing_gear
+import matplotlib.pyplot as plt
 
 np.set_printoptions(legacy='1.25')
 #========================================
@@ -107,10 +108,6 @@ def analyze(airplane = None,
         print('xnp [%%MAC]: %.1f'%((xnp-xm_w)/cm_w*100))
         print('xcg_fwd [%%MAC]: %.1f'%((xcg_fwd-xm_w)/cm_w*100))
         print('xcg_aft [%%MAC]: %.1f'%((xcg_aft-xm_w)/cm_w*100))
-
-        # DESCOMENTAR ESSAS LINHAS CASO QUEIRAM VER O PASSEIO DE CG
-        # print("xcg_hist :", xcg_hist)
-        # print("W_hist :", W_hist)
         
         if airplane['inputs']['x_nlg'] is not None:
 
@@ -131,5 +128,17 @@ def analyze(airplane = None,
     # Plot again now that we have CG and NP
     if plot:
         plot_geometry(airplane)
+        xcg_hist = airplane['balance']['xcg_hist']
+        W_hist = np.array(airplane['balance']['W_hist']) / gravity  # Converte [N] para [kgf]
+        
+        plt.figure()
+        plt.plot(xcg_hist, W_hist, marker='o', linestyle='-', color='navy', linewidth=2, label='Trajetória de CG')
+        plt.xlabel('Posição do CG [m]', fontsize=12)
+        plt.ylabel('Peso [kgf]', fontsize=12)
+        plt.title('Diagrama de Posições do CG', fontsize=13)
+        plt.grid(True, linestyle='--', alpha=0.7)
+        plt.legend()
+        plt.tight_layout()
+        plt.show()
 
     return airplane
