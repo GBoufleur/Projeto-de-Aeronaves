@@ -137,9 +137,9 @@ def standard_airplane(name='crusair1'): # crusair 333
               'range_altcruise' : 370400.0, # Alternative cruise range [m]
 
                # Passenger distribution: one row with 2 PAX and 21 rows with 5 PAX
-              'payload_groups' : {'weight' : [4*100*gravity, 9*100*gravity], # Weight that corresponds to the unit of each payload group [N]
-                                  'x0' : [5.7, 6.513], # longitudinal CG position of the first unit of each payload group [m]
-                                  'pitch' : [53*0.0254, 31*0.0254], # longitudinal pitch between units of each payload group [m]
+              'payload_groups' : {'weight' : [4*100*gravity, 9*100*gravity, 9*100*gravity], # Weight that corresponds to the unit of each payload group [N]
+                                  'x0' : [10.4, 25.5, 39.6], # longitudinal CG position of the first unit of each payload group [m]
+                                  'pitch' : [53*0.0254, 31*0.0254, 31*0.0254], # longitudinal pitch between units of each payload group [m]
                                   'units' : [8, 15, 17], # number of units at each payload group, which will be spaced by the pitch
                                   },
               'W_maxpayload' : 11242*gravity, # Maximum payload weight [N]
