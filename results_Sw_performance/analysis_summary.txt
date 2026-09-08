@@ -1,23 +1,23 @@
 MLW_frac = 0.7400
-Landing root MLW = 461.938 m2
-Takeoff/HSC crossover Sw = 474.703 m2
-Minimum 5pct envelope at Sw = 486.0 m2, T0 = 1032.739 kN
-Code E upper-area threshold at AR=9.3 = 454.301 m2
+Landing root MLW = 313.813 m2
+Takeoff/HSC crossover Sw = 399.995 m2
+Minimum 5pct envelope at Sw = 435.0 m2, T0 = 744.455 kN
+Code E upper-area threshold at AR=9.3 = 394.860 m2
 Critical intervals:
-300.0 to 474.0 m2: Takeoff
-475.0 to 500.0 m2: High speed cruise
+300.0 to 399.0 m2: Takeoff
+400.0 to 500.0 m2: High speed cruise
 Reference Sw=450 m2:
-MTOW_t = 315.0891863327694
-Wempty_t = 158.49902225896125
-Wfuel_t = 123.69016407380815
-MLW_t = 233.16599788624933
-span_m = 64.69157595854347
-Sh_m2 = 79.41176470588235
-Sv_m2 = 56.25
-CLmaxTO = 1.7139234448757423
-CLmaxLD = 1.8679915965253613
-LD_cruise = 20.870689233925976
-deltaS_landing_m2 = -10.32934829857561
-Takeoff = 1019.6602599554102
-High speed cruise = 987.7697537732397
-T0_design_5pct_kN = 1070.6432729531805
+MTOW_t = 283.8923630441187
+Wempty_t = 149.55589915603065
+Wfuel_t = 99.63646388808812
+MLW_t = 210.08034865264787
+span_m = 69.39020103732227
+Sh_m2 = 79.41176470588236
+Sv_m2 = 56.24999999999999
+CLmaxTO = 2.151642161144213
+CLmaxLD = 2.456230295429802
+LD_cruise = 22.742898127091664
+deltaS_landing_m2 = 134.57601825497994
+Takeoff = 659.3519418844658
+High speed cruise = 709.514550476832
+T0_design_5pct_kN = 744.9902780006737

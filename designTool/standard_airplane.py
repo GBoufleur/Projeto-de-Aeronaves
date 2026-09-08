@@ -23,10 +23,10 @@ def standard_airplane(name='crusair1'): # crusair 333
         
         inputs = {'type': 'transport', # Can be 'transport', 'fighter', or 'general'
 
-              'S_w' : 455, # Wing area [m2]
-              'AR_w' : 9.28,  # Wing aspect ratio
+              'S_w' : 394, # Wing area [m2]
+              'AR_w' : 10.7,  # Wing aspect ratio
               'taper_w' : 0.129, # Wing taper ratio
-              'sweep_w' : 35*np.pi/180, # Wing sweep [rad]
+              'sweep_w' : 33*np.pi/180, # Wing sweep [rad]
               'dihedral_w' : 7*np.pi/180, # Wing dihedral [rad]
               'xr_w' : 22.07, # Longitudinal position of the wing (with respect to the fuselage nose) [m]
               'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
@@ -57,8 +57,8 @@ def standard_airplane(name='crusair1'): # crusair 333
               'tcr_v' : 0.12, # t/c of the root section of the VT
               'tct_v' : 0.12, # t/c of the tip section of the VT
 
-              'L_f' : 65.11, # Fuselage length [m]
-              'D_f' : 5.61, # Fuselage diameter [m]
+              'L_f' : 64.9, # Fuselage length [m]
+              'D_f' : 6.1, # Fuselage diameter [m]
 
               'x_n' : 21.313, # Longitudinal position of the nacelle frontal face [m]
               'y_n' : 9.329, # Lateral position of the nacelle centerline [m]
@@ -70,13 +70,14 @@ def standard_airplane(name='crusair1'): # crusair 333
               'n_engines_under_wing' : 2, # Number of engines installed under the wing
 
                 'engine' : {'model' : 'Howe turbofan', # Modelo interno usado pelo designTool
-                            # Motor de referência física: Rolls-Royce Trent XWB-97 usado no A350-1000
+                            # Motor de referência física: Rolls-Royce Trent XWB-84 usado no A350-900
 
+                            # Rolls-Royce Trent XWB-84
                             'BPR' : 9.6, # Engine bypass ratio [-]
-                            'weight' : 74030.4, # Single engine dry weight [N]
-                            'Tmax' : 431500.0, # Single engine maximum thrust at sea level [N]
+                            'weight' : 71387.4, # Single engine dry weight [N]
+                            'Tmax' : 374540.1, # Single engine maximum thrust at sea level [N]
                             'C_ref' : 0.48 / 3600, # Reference TSFC [1/s]
-                            'altitude_ref': 35000*ft2m, # Reference altitude for TSFC [m]
+                            'altitude_ref': 37000*ft2m, # Reference altitude for TSFC [m]
                             'Mach_ref': 0.85, # Reference Mach number for TSFC
 
               },
@@ -121,12 +122,12 @@ def standard_airplane(name='crusair1'): # crusair 333
               'deltaISA_landing' : 0.0, # Variation from ISA standard temperature [ºC]
               'MLW_frac' : 0.74, # Max Landing Weight / Max Takeoff Weight
 
-              'altitude_cruise' : 10668.0, # Cruise altitude for design mission [m]
+              'altitude_cruise' : 37000*ft2m, # Cruise altitude for design mission [m]
               'Mach_cruise' : 0.85, # Cruise Mach number for design mission
               'range_cruise' : 8000*nm2m, # Cruise range for design mission [m]
 
-              'altitude_maxcruise' : 41000*ft2m, # Altitude for high-speed cruise [m]
-              'Mach_maxcruise' : 0.9, # Mach for high-speed cruise [m]
+              'altitude_maxcruise' : 36000*ft2m, # Altitude for high-speed cruise [m]
+              'Mach_maxcruise' : 0.87, # Mach for high-speed cruise [m]
 
               'time_loiter' : 2700.0, # Loiter time [s]
               'altitude_loiter' : 457.2, # Loiter altitude [m]
