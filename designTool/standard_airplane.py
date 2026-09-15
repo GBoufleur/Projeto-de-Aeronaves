@@ -85,11 +85,11 @@ def standard_airplane(name='crusair1'): # crusair 333
               'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
               'x_mlg' : 34.5, # Longitudinal position of the main landing gear [m]
               'y_mlg' : 4.898, # Lateral position of the main landing gear [m]
-              'z_lg' : -6, # Vertical position of the landing gear [m]
+              'z_lg' : -6.8, # Vertical position of the landing gear [m]
               'x_tailstrike' : 55.946, # Longitudinal position of critical tailstrike point [m]
               'z_tailstrike' : -2.9, # Vertical position of critical tailstrike point [m]
 
-              'c_tank_c_w' : 0.4, # Fraction of the wing chord occupied by the fuel tank
+              'c_tank_c_w' : 0.41, # Fraction of the wing chord occupied by the fuel tank
               'x_tank_c_w' : 0.2, # Fraction of the wing chord where fuel tank starts
               'b_tank_b_w_start' : 0.0, # Fraction of the wing semi-span where fuel tank starts
               'b_tank_b_w_end' : 0.95, # Fraction of the wing semi-span where fuel tank ends
