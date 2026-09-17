@@ -127,18 +127,22 @@ def analyze(airplane = None,
 
     # Plot again now that we have CG and NP
     if plot:
-        plot_geometry(airplane)
+        # plot_geometry(airplane)
         xcg_hist = airplane['balance']['xcg_hist']
         W_hist = np.array(airplane['balance']['W_hist']) / gravity  # Converte [N] para [kgf]
         
         plt.figure()
-        plt.plot(xcg_hist, W_hist, marker='o', linestyle='-', color='navy', linewidth=2, label='Trajetória de CG')
+        plt.plot(xcg_hist, W_hist, marker='o', linestyle='-', linewidth=2, label='Trajetória de CG')
+        plt.axvline(xnp, linestyle='--', linewidth=2, color='red', label='x_np')
+        plt.axvline(x_mlg, linestyle='--', linewidth=2, color='green', label='x_mlg')
         plt.xlabel('Posição do CG [m]', fontsize=12)
         plt.ylabel('Peso [kgf]', fontsize=12)
         plt.title('Diagrama de Posições do CG', fontsize=13)
-        plt.grid(True, linestyle='--', alpha=0.7)
+        plt.grid(True)
         plt.legend()
         plt.tight_layout()
         plt.show()
+
+
 
     return airplane
