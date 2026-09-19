@@ -59,8 +59,9 @@ def analyze(airplane = None,
     # Generate geometry
     geometry(airplane)
 
-    if plot:
-        plot_geometry(airplane)
+    # PARA PLOTAR O AVIAO EH SOH DESCOMENTAR AQUI
+    # if plot:
+    #     plot_geometry(airplane)
 
     # Converge MTOW and Takeoff Thrust
     thrust_matching(W0_guess, T0_guess, airplane)
