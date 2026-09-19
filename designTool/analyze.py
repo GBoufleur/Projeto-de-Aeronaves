@@ -89,8 +89,6 @@ def analyze(airplane = None,
         cm_w = airplane['geometry']['cm_w']
         xcg_fwd = airplane['balance']['xcg_fwd']
         xcg_aft = airplane['balance']['xcg_aft']
-        xcg_hist = airplane['balance']['xcg_hist']
-        W_hist = airplane['balance']['W_hist']
 
         print('W_payload [kgf]: %d'%(W_payload/gravity))
         print('W_empty [kgf]: %d'%(W_empty/gravity))
@@ -128,19 +126,37 @@ def analyze(airplane = None,
     # Plot again now that we have CG and NP
     if plot:
         # plot_geometry(airplane)
+        from matplotlib.patches import Rectangle
+        import matplotlib.ticker as ticker
+
         xcg_hist = airplane['balance']['xcg_hist']
         W_hist = np.array(airplane['balance']['W_hist']) / gravity  # Converte [N] para [kgf]
-        
+
         plt.figure()
         plt.plot(xcg_hist, W_hist, marker='o', linestyle='-', linewidth=2, label='Trajetória de CG')
         plt.axvline(xnp, linestyle='--', linewidth=2, color='red', label='x_np')
         plt.axvline(x_mlg, linestyle='--', linewidth=2, color='green', label='x_mlg')
+
+        # usei os parametros do proprio vetor w_hist do passeio de CG para fazer o envelope, junto com xcg_fwd e aft
+        env = Rectangle(
+            (xcg_fwd, min(W_hist)),
+            xcg_aft - xcg_fwd,
+            max(W_hist) - min(W_hist),
+            edgecolor="purple",
+            facecolor="none",
+            linestyle="--",
+            linewidth=2,
+            label="Envelope",
+        )
+        plt.gca().add_patch(env)
         plt.xlabel('Posição do CG [m]', fontsize=12)
         plt.ylabel('Peso [kgf]', fontsize=12)
         plt.title('Diagrama de Posições do CG', fontsize=13)
         plt.grid(True)
         plt.legend()
         plt.tight_layout()
+        # coloquei soh pra mostrar melhor a escala
+        plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(0.5))
         plt.show()
 
 
