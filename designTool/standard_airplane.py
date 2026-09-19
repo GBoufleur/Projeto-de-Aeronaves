@@ -28,7 +28,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'taper_w' : 0.129, # Wing taper ratio
               'sweep_w' : 33*np.pi/180, # Wing sweep [rad]
               'dihedral_w' : 7*np.pi/180, # Wing dihedral [rad]
-              'xr_w' : 22.07, # Longitudinal position of the wing (with respect to the fuselage nose) [m]
+              'xr_w' : 21.5, # Longitudinal position of the wing (with respect to the fuselage nose) [m]
               'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
               'tcr_w' : 0.14, # t/c of the root section of the wing
               'tct_w' : 0.10, # t/c of the tip section of the wing
