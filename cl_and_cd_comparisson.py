@@ -7,7 +7,7 @@ from designTool.standard_airplane import standard_airplane
 from designTool.auxiliary import atmosphere
 
 # Create a default airplane instance for the analysis
-airplane = standard_airplane('crusair1')
+airplane = standard_airplane('crusair_opt')
 from designTool.geometry import geometry as compute_geometry
 
 # Compute geometry fields expected by the aerodynamic routine
