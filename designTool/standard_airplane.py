@@ -295,6 +295,146 @@ def standard_airplane(name='crusair1'): # crusair 333
               'We_fudge' : 0.95 # Fudge factor to adjust empty weight
               }
 
+    elif name == 'crusair_opt': # crusair1 otimizado via Evolucao Diferencial (min W0)
+
+        inputs = {'type': 'transport', # Can be 'transport', 'fighter', or 'general'
+
+              'S_w' : 379.2801, # Wing area [m2] 
+              'AR_w' : 11.1392,  # Wing aspect ratio
+              'taper_w' : 0.1200, # Wing taper ratio 
+              'sweep_w' : 35.9986*np.pi/180, # Wing sweep [rad]
+              'dihedral_w' : 7*np.pi/180, # Wing dihedral [rad]
+              'xr_w' : 20.8806, # Longitudinal position of the wing (with respect to the fuselage nose) [m] (otimizado; baseline: 21.5)
+              'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
+              'tcr_w' : 0.1600, # t/c of the root section of the wing
+              'tct_w' : 0.10, # t/c of the tip section of the wing
+
+              'Cht' : 0.6, # Horizontal tail volume coefficient
+              'Lc_h' : 3.4, # Non-dimensional lever of the horizontal tail (lever/wing_mac)
+              'AR_h' : 4.817, # HT aspect ratio
+              'taper_h' : 0.239, # HT taper ratio
+              'sweep_h' : 39*np.pi/180, # HT sweep [rad]
+              'dihedral_h' : 8*np.pi/180, # HT dihedral [rad]
+              'zr_h' : 1.581, # Vertical position of the HT [m]
+
+              # NACA 0010
+              'tcr_h' : 0.1, # t/c of the root section of the HT
+              'tct_h' : 0.1, # t/c of the tip section of the HT
+              'eta_h' : 0.9, # Dynamic pressure factor of the HT (0.9 for conventional tail or 1.0 for T-tail)
+
+              'Cvt' : 0.05, # Vertical tail volume coefficient
+              'Lb_v' : 0.4, # Non-dimensional lever of the vertical tail (lever/wing_span)
+              'AR_v' : 1.8, # VT aspect ratio
+              'taper_v' : 0.35, # VT taper ratio
+              'sweep_v' : 41*np.pi/180, # VT sweep [rad]
+              'zr_v' : 3.087, # Vertical position of the VT [m]
+
+              # NACA 0012
+              'tcr_v' : 0.12, # t/c of the root section of the VT
+              'tct_v' : 0.12, # t/c of the tip section of the VT
+
+              'L_f' : 64.9, # Fuselage length [m]
+              'D_f' : 6.1, # Fuselage diameter [m]
+
+              'x_n' : 21.313, # Longitudinal position of the nacelle frontal face [m]
+              'y_n' : 9.329, # Lateral position of the nacelle centerline [m]
+              'z_n' : -2.6, # Vertical position of the nacelle centerline [m]
+              'L_n' : 5.812, # Nacelle length [m]
+              'D_n' : 3.062, # Nacelle diameter [m]
+
+              'n_engines' : 2, # Number of engines
+              'n_engines_under_wing' : 2, # Number of engines installed under the wing
+
+                'engine' : {'model' : 'Howe turbofan', # Modelo interno usado pelo designTool
+                            # Motor de referência física: Rolls-Royce Trent XWB-84 usado no A350-900
+
+                            # Rolls-Royce Trent XWB-84
+                            'BPR' : 9.6, # Engine bypass ratio [-]
+                            'weight' : 71387.4, # Single engine dry weight [N]
+                            'Tmax' : 374540.1, # Single engine maximum thrust at sea level [N]
+                            'C_ref' : 0.48 / 3600, # Reference TSFC [1/s]
+                            'altitude_ref': 37000*ft2m, # Reference altitude for TSFC [m]
+                            'Mach_ref': 0.85, # Reference Mach number for TSFC
+
+              },
+
+              'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
+              'x_mlg' : 34.7, # Longitudinal position of the main landing gear [m]
+              'y_mlg' : 4.898, # Lateral position of the main landing gear [m]
+              'z_lg' : -6.8, # Vertical position of the landing gear [m]
+              'x_tailstrike' : 55.946, # Longitudinal position of critical tailstrike point [m]
+              'z_tailstrike' : -3.05, # Vertical position of critical tailstrike point [m]
+
+              'c_tank_c_w' : 0.41, # Fraction of the wing chord occupied by the fuel tank
+              'x_tank_c_w' : 0.2, # Fraction of the wing chord where fuel tank starts
+              'b_tank_b_w_start' : 0.0, # Fraction of the wing semi-span where fuel tank starts
+              'b_tank_b_w_end' : 0.95, # Fraction of the wing semi-span where fuel tank ends
+
+              'clmax_w' : 1.64, # Maximum lift coefficient of wing airfoil
+              'k_korn' : 0.95, # Airfoil technology factor for Korn equation (wave drag)
+
+              'flap_type' : 'single slotted',  # Flap type
+              'c_flap_c_wing' : 0.30, # Fraction of the wing chord occupied by flaps
+              'b_flap_b_wing' : 0.70, # Fraction of the wing span occupied by flaps (including fuselage portion)
+
+              'slat_type' : 'slat', # Slat type
+              'c_slat_c_wing' : 0.152007, # Fraction of the wing chord occupied by slats
+              'b_slat_b_wing' : 0.740334, # Fraction of the wing span occupied by slats
+
+              'c_ail_c_wing' : 0.272016, # Fraction of the wing chord occupied by aileron
+              'b_ail_b_wing' : 0.262576, # Fraction of the wing span occupied by aileron
+
+              'h_ground' : 10.668, # Distance to the ground for ground effect computation [m]
+              'k_exc_drag' : 0.03, # Excrescence drag factor applied to systems (Torenbeek Tab F-5.7)
+
+              'winglet' : True, # Add winglet
+
+              'altitude_takeoff' : 0.0, # Altitude for takeoff computation [m]
+              'distance_takeoff' : 2900.0, # Required takeoff distance [m]
+              'deltaISA_takeoff' : 0.0, # Variation from ISA standard temperature [ºC]
+
+              'altitude_landing' : 0.0, # Altitude for landing computation [m]
+              'distance_landing' : 2000.0, # Required landing distance [m]
+              'deltaISA_landing' : 0.0, # Variation from ISA standard temperature [ºC]
+              'MLW_frac' : 0.74, # Max Landing Weight / Max Takeoff Weight
+
+              'altitude_cruise' : 37000*ft2m, # Cruise altitude for design mission [m]
+              'Mach_cruise' : 0.85, # Cruise Mach number for design mission
+              'range_cruise' : 8000*nm2m, # Cruise range for design mission [m]
+
+              'altitude_maxcruise' : 36000*ft2m, # Altitude for high-speed cruise [m]
+              'Mach_maxcruise' : 0.85, # Mach for high-speed cruise [m]
+
+              'time_loiter' : 2700.0, # Loiter time [s]
+              'altitude_loiter' : 457.2, # Loiter altitude [m]
+
+              'altitude_altcruise' : 457.2, # Alternative cruise altitude [m]
+              'Mach_altcruise' : 0.4, # Alternative cruise Mach number
+              'range_altcruise' : 370400.0, # Alternative cruise range [m]
+
+               # Passenger distribution: one row with 2 PAX and 21 rows with 5 PAX
+              'payload_groups' : {'weight' : [4*100*gravity, 9*100*gravity, 9*100*gravity], # Weight that corresponds to the unit of each payload group [N]
+                                  'x0' : [10.4, 25.5, 39.6], # longitudinal CG position of the first unit of each payload group [m]
+                                  'pitch' : [53*0.0254, 31*0.0254, 31*0.0254], # longitudinal pitch between units of each payload group [m]
+                                  'units' : [8, 15, 17], # number of units at each payload group, which will be spaced by the pitch
+                                  },
+              'W_maxpayload' : 11242*gravity, # Maximum payload weight [N]
+
+              'W_crew' : 9*100*gravity, # Crew weight [N]
+              'xcg_crew' : 2.5, # Longitudinal position of the Crew center of gravity [m]
+
+              'block_range' : 400*nm2m, # Block range [m]
+              'block_time' : (1.0 + 2*40/60)*3600, # Block time [s]
+              'n_captains' : 1, # Number of captains in flight
+              'n_copilots' : 1, # Number of copilots in flight
+
+              'rho_fuel' : 804, # Fuel density kg/m3 (This is Jet A-1)
+
+              'W0_guess' : 260904*gravity, # Guess for MTOW
+
+              'We_fudge' : 0.95 # Fudge factor to adjust empty weight
+              }
+
     airplane = {'inputs':inputs}
 
     return airplane
