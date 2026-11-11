@@ -8,7 +8,7 @@ import numpy as np
 import pprint
 
 # Load a sample case already defined in designTools.py:
-airplane = standard_airplane('crusair1')
+airplane = standard_airplane('crusair_opt')
 
 # Execute the analysis function
-analyze(airplane, print_log=True, plot=True)
+analyze(airplane, print_log=True, plot=False)

@@ -60,8 +60,8 @@ def analyze(airplane = None,
     geometry(airplane)
 
     # PARA PLOTAR O AVIAO EH SOH DESCOMENTAR AQUI
-    # if plot:
-    #     plot_geometry(airplane)
+    if plot:
+        plot_geometry(airplane)
 
     # Converge MTOW and Takeoff Thrust
     thrust_matching(W0_guess, T0_guess, airplane)
@@ -132,6 +132,8 @@ def analyze(airplane = None,
 
         xcg_hist = airplane['balance']['xcg_hist']
         W_hist = np.array(airplane['balance']['W_hist']) / gravity  # Converte [N] para [kgf]
+
+        print(xcg_fwd, xcg_aft, xnp, x_mlg)
 
         plt.figure()
         plt.plot(xcg_hist, W_hist, marker='o', linestyle='-', linewidth=2, label='Trajetória de CG')

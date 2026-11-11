@@ -42,7 +42,7 @@ def run():
     rows = []
 
     for sw in sw_values:
-        airplane = deepcopy(standard_airplane('crusair1'))
+        airplane = deepcopy(standard_airplane('crusair_opt'))
         airplane['inputs']['S_w'] = float(sw)
         geometry(airplane)
         t_weight = airplane['inputs']['engine']['Tmax'] * airplane['inputs']['n_engines']
@@ -101,7 +101,7 @@ def run():
     critical = [r['critical'] for r in rows]
     intervals = contiguous_intervals(sw, critical)
     min_i = int(np.argmin(design))
-    code_e_sw = 65.0**2 / standard_airplane('crusair1')['inputs']['AR_w']
+    code_e_sw = 65.0**2 / standard_airplane('crusair_opt')['inputs']['AR_w']
 
     fig, ax = plt.subplots(figsize=(11, 7))
     for key in criteria:
@@ -109,7 +109,7 @@ def run():
     ax.plot(sw, envelope, linewidth=3.0, color='black', label='Envoltória crítica')
     #ax.plot(sw, design, linewidth=2.0, color='black', linestyle='--', label='Envoltória + 5%')
     # Mark selected wing area on the design envelope (+5%)
-    selected_sw = standard_airplane('crusair1')['inputs']['S_w']
+    selected_sw = standard_airplane('crusair_opt')['inputs']['S_w']
     selected_T0 = np.interp(selected_sw, sw, envelope)
 
     ax.scatter(

@@ -11,7 +11,7 @@ from designTool.auxiliary import atmosphere
 import matplotlib.pyplot as plt
 
 # Load a sample case already defined in designTools.py:
-airplane = standard_airplane('crusair1')
+airplane = standard_airplane('crusair_opt')
 airplane2 = standard_airplane('crusair2')
 
 # Execute the geometry function
