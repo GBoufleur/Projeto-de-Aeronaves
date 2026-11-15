@@ -60,11 +60,11 @@ def standard_airplane(name='crusair1'): # crusair 333
               'L_f' : 64.9, # Fuselage length [m]
               'D_f' : 6.1, # Fuselage diameter [m]
 
-              'x_n' : 21.313, # Longitudinal position of the nacelle frontal face [m]
+              'x_n' : 22.5, # Longitudinal position of the nacelle frontal face [m]
               'y_n' : 9.329, # Lateral position of the nacelle centerline [m]
-              'z_n' : -2.6, # Vertical position of the nacelle centerline [m]
+              'z_n' : -2.9, # Vertical position of the nacelle centerline [m]
               'L_n' : 5.812, # Nacelle length [m]
-              'D_n' : 3.062, # Nacelle diameter [m]
+              'D_n' : 3.94, # Nacelle diameter [m]
 
               'n_engines' : 2, # Number of engines
               'n_engines_under_wing' : 2, # Number of engines installed under the wing
@@ -84,12 +84,12 @@ def standard_airplane(name='crusair1'): # crusair 333
 
               'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
               'x_mlg' : 34.7, # Longitudinal position of the main landing gear [m]
-              'y_mlg' : 4.898, # Lateral position of the main landing gear [m]
-              'z_lg' : -6.8, # Vertical position of the landing gear [m]
-              'x_tailstrike' : 55.946, # Longitudinal position of critical tailstrike point [m]
+              'y_mlg' : 5.9, # Lateral position of the main landing gear [m]
+              'z_lg' : -5.8, # Vertical position of the landing gear [m]
+              'x_tailstrike' : 49.5, # Longitudinal position of critical tailstrike point [m]
               'z_tailstrike' : -3.05, # Vertical position of critical tailstrike point [m]
 
-              'c_tank_c_w' : 0.41, # Fraction of the wing chord occupied by the fuel tank
+              'c_tank_c_w' : 0.45, # Fraction of the wing chord occupied by the fuel tank
               'x_tank_c_w' : 0.2, # Fraction of the wing chord where fuel tank starts
               'b_tank_b_w_start' : 0.0, # Fraction of the wing semi-span where fuel tank starts
               'b_tank_b_w_end' : 0.95, # Fraction of the wing semi-span where fuel tank ends
@@ -299,15 +299,15 @@ def standard_airplane(name='crusair1'): # crusair 333
 
         inputs = {'type': 'transport', # Can be 'transport', 'fighter', or 'general'
 
-              'S_w' : 379.2801, # Wing area [m2] 
-              'AR_w' : 11.1392,  # Wing aspect ratio
-              'taper_w' : 0.1200, # Wing taper ratio 
-              'sweep_w' : 35.9986*np.pi/180, # Wing sweep [rad]
+              'S_w' : 385.6353, # Wing area [m2] 
+              'AR_w' : 10.7861,  # Wing aspect ratio
+              'taper_w' : 0.1100, # Wing taper ratio 
+              'sweep_w' : 33.3549*np.pi/180, # Wing sweep [rad]
               'dihedral_w' : 7*np.pi/180, # Wing dihedral [rad]
-              'xr_w' : 20.8806, # Longitudinal position of the wing (with respect to the fuselage nose) [m] (otimizado; baseline: 21.5)
+              'xr_w' : 21.4890, # Longitudinal position of the wing (with respect to the fuselage nose) [m] (otimizado; baseline: 21.5)
               'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
-              'tcr_w' : 0.1600, # t/c of the root section of the wing
-              'tct_w' : 0.10, # t/c of the tip section of the wing
+              'tcr_w' : 0.1298, # t/c of the root section of the wing
+              'tct_w' : 0.0900, # t/c of the tip section of the wing
 
               'Cht' : 0.6, # Horizontal tail volume coefficient
               'Lc_h' : 3.4, # Non-dimensional lever of the horizontal tail (lever/wing_mac)
@@ -336,11 +336,11 @@ def standard_airplane(name='crusair1'): # crusair 333
               'L_f' : 64.9, # Fuselage length [m]
               'D_f' : 6.1, # Fuselage diameter [m]
 
-              'x_n' : 21.313, # Longitudinal position of the nacelle frontal face [m]
+              'x_n' : 21.8, # Longitudinal position of the nacelle frontal face [m]
               'y_n' : 9.329, # Lateral position of the nacelle centerline [m]
               'z_n' : -2.6, # Vertical position of the nacelle centerline [m]
               'L_n' : 5.812, # Nacelle length [m]
-              'D_n' : 3.062, # Nacelle diameter [m]
+              'D_n' : 3.94, # Nacelle diameter [m]
 
               'n_engines' : 2, # Number of engines
               'n_engines_under_wing' : 2, # Number of engines installed under the wing
@@ -359,13 +359,13 @@ def standard_airplane(name='crusair1'): # crusair 333
               },
 
               'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
-              'x_mlg' : 34.7, # Longitudinal position of the main landing gear [m]
-              'y_mlg' : 4.898, # Lateral position of the main landing gear [m]
-              'z_lg' : -6.8, # Vertical position of the landing gear [m]
-              'x_tailstrike' : 55.946, # Longitudinal position of critical tailstrike point [m]
+              'x_mlg' : 34.1308, # Longitudinal position of the main landing gear [m]
+              'y_mlg' : 5.9, # Lateral position of the main landing gear [m]
+              'z_lg' : -5.8, # Vertical position of the landing gear [m]
+              'x_tailstrike' : 49.5, # Longitudinal position of critical tailstrike point [m]
               'z_tailstrike' : -3.05, # Vertical position of critical tailstrike point [m]
 
-              'c_tank_c_w' : 0.41, # Fraction of the wing chord occupied by the fuel tank
+              'c_tank_c_w' : 0.45, # Fraction of the wing chord occupied by the fuel tank
               'x_tank_c_w' : 0.2, # Fraction of the wing chord where fuel tank starts
               'b_tank_b_w_start' : 0.0, # Fraction of the wing semi-span where fuel tank starts
               'b_tank_b_w_end' : 0.95, # Fraction of the wing semi-span where fuel tank ends
