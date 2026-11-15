@@ -72,6 +72,19 @@ def analyze(airplane = None,
     # Landing gear design
     landing_gear(airplane)
 
+    # Simplified MLG lateral retraction clearance between left and right tires
+    if airplane['inputs']['x_nlg'] is not None:
+        y_mlg = airplane['inputs']['y_mlg']
+        z_lg = airplane['inputs']['z_lg']
+        D_f = airplane['inputs']['D_f']
+        zr_w = airplane['inputs']['zr_w']
+        zt_w = airplane['geometry']['zt_w']
+        b_w = airplane['geometry']['b_w']
+        z_w_mlg = zr_w + (zt_w - zr_w) * (y_mlg / (b_w / 2.0))
+        L_strut = z_w_mlg - z_lg
+        r_lg = 0.1 * D_f
+        airplane['landing_gear']['mlg_tire_clearance'] = 2.0 * (y_mlg - (L_strut + r_lg))
+
     if print_log:
         W_payload = airplane['thrust_matching']['W_payload']
         W_empty = airplane['thrust_matching']['W_empty']
@@ -123,6 +136,7 @@ def analyze(airplane = None,
             print('alpha_tipback [deg]: %.1f'%(alpha_tipback*180.0/np.pi))
             print('alpha_tailstrike [deg]: %.1f'%(alpha_tailstrike*180.0/np.pi))
             print('phi_overturn [deg]: %.1f'%(phi_overturn*180.0/np.pi))
+            print('mlg_tire_clearance [m]: %.3f'%(airplane['landing_gear']['mlg_tire_clearance']))
 
     # Plot again now that we have CG and NP
     if plot:
@@ -130,20 +144,32 @@ def analyze(airplane = None,
         from matplotlib.patches import Rectangle
         import matplotlib.ticker as ticker
 
-        xcg_hist = airplane['balance']['xcg_hist']
+        xm_w = airplane['geometry']['xm_w']
+        cm_w = airplane['geometry']['cm_w']
+        xnp = airplane['balance']['xnp']
+        xcg_fwd = airplane['balance']['xcg_fwd']
+        xcg_aft = airplane['balance']['xcg_aft']
+        x_mlg = airplane['inputs']['x_mlg']
+
+        to_mac = lambda x: (np.asarray(x) - xm_w) / cm_w * 100.0
+
+        xcg_hist_mac = to_mac(airplane['balance']['xcg_hist'])
+        xnp_mac = to_mac(xnp)
+        xcg_fwd_mac = to_mac(xcg_fwd)
+        xcg_aft_mac = to_mac(xcg_aft)
+        x_mlg_mac = to_mac(x_mlg)
         W_hist = np.array(airplane['balance']['W_hist']) / gravity  # Converte [N] para [kgf]
 
-        print(xcg_fwd, xcg_aft, xnp, x_mlg)
-
         plt.figure()
-        plt.plot(xcg_hist, W_hist, marker='o', linestyle='-', linewidth=2, label='Trajetória de CG')
-        plt.axvline(xnp, linestyle='--', linewidth=2, color='red', label='x_np')
-        plt.axvline(x_mlg, linestyle='--', linewidth=2, color='green', label='x_mlg')
+        plt.plot(xcg_hist_mac, W_hist, marker='o', linestyle='-', linewidth=2, label='Trajetória de CG')
+        plt.axvline(xnp_mac, linestyle='--', linewidth=2, color='red', label='x_np')
+        if x_mlg is not None:
+            plt.axvline(x_mlg_mac, linestyle='--', linewidth=2, color='green', label='x_mlg')
 
         # usei os parametros do proprio vetor w_hist do passeio de CG para fazer o envelope, junto com xcg_fwd e aft
         env = Rectangle(
-            (xcg_fwd, min(W_hist)),
-            xcg_aft - xcg_fwd,
+            (xcg_fwd_mac, min(W_hist)),
+            xcg_aft_mac - xcg_fwd_mac,
             max(W_hist) - min(W_hist),
             edgecolor="purple",
             facecolor="none",
@@ -152,14 +178,14 @@ def analyze(airplane = None,
             label="Envelope",
         )
         plt.gca().add_patch(env)
-        plt.xlabel('Posição do CG [m]', fontsize=12)
+        plt.xlabel('Posição do CG [% MAC]', fontsize=12)
         plt.ylabel('Peso [kgf]', fontsize=12)
         plt.title('Diagrama de Posições do CG', fontsize=13)
         plt.grid(True)
         plt.legend()
         plt.tight_layout()
         # coloquei soh pra mostrar melhor a escala
-        plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(0.5))
+        plt.gca().xaxis.set_major_locator(ticker.MultipleLocator(5))
         plt.show()
 
 
