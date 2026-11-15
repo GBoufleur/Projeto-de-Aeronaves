@@ -20,8 +20,10 @@ def weight(W0_guess, T0_guess, airplane):
 
     # Set iterator
     delta = 1000
+    n_iter = 0
 
-    while abs(delta) > 10:
+    while abs(delta) > 10 and n_iter < 200:
+        n_iter += 1
 
         # We need to call fuel_weight first since it
         # calls the aerodynamics module to get Swet_f used by
@@ -31,6 +33,9 @@ def weight(W0_guess, T0_guess, airplane):
         W_empty = empty_weight(W0_guess, T0_guess, airplane)
 
         W0 = W_empty + W_fuel + W_payload + W_crew
+
+        if not np.isfinite(W0) or W0 <= 0:
+            break
 
         delta = W0 - W0_guess
 
