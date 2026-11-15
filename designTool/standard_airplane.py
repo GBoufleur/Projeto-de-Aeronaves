@@ -382,7 +382,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               'b_slat_b_wing' : 0.740334, # Fraction of the wing span occupied by slats
 
               'c_ail_c_wing' : 0.272016, # Fraction of the wing chord occupied by aileron
-              'b_ail_b_wing' : 0.262576, # Fraction of the wing span occupied by aileron
+              'b_ail_b_wing' : 0.33, # Fraction of the wing span occupied by aileron
 
               'h_ground' : 10.668, # Distance to the ground for ground effect computation [m]
               'k_exc_drag' : 0.03, # Excrescence drag factor applied to systems (Torenbeek Tab F-5.7)
