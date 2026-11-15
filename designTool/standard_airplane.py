@@ -299,15 +299,15 @@ def standard_airplane(name='crusair1'): # crusair 333
 
         inputs = {'type': 'transport', # Can be 'transport', 'fighter', or 'general'
 
-              'S_w' : 381.5092736543593, # Wing area [m2] 
-              'AR_w' : 10.904715046492132,  # Wing aspect ratio
-              'taper_w' : 0.1100, # Wing taper ratio 
-              'sweep_w' : 33.499999999999964*np.pi/180, # Wing sweep [rad]
+              'S_w' : 381.9006254463687, # Wing area [m2] 
+              'AR_w' : 10.877395042309752,  # Wing aspect ratio
+              'taper_w' : 0.11015696174604027, # Wing taper ratio 
+              'sweep_w' : 33.474795409159*np.pi/180, # Wing sweep [rad]
               'dihedral_w' : 7*np.pi/180, # Wing dihedral [rad]
-              'xr_w' : 21.4890, # Longitudinal position of the wing (with respect to the fuselage nose) [m] (otimizado; baseline: 21.5)
+              'xr_w' : 21.271735634470573, # Longitudinal position of the wing (with respect to the fuselage nose) [m] (otimizado; baseline: 21.5)
               'zr_w' : -1.4, # Vertical position of the wing (with respect to the fuselage nose) [m]
-              'tcr_w' : 0.12999999999999962, # t/c of the root section of the wing
-              'tct_w' : 0.09000000000000617, # t/c of the tip section of the wing
+              'tcr_w' : 0.12995856030997208, # t/c of the root section of the wing
+              'tct_w' : 0.09001755674625403, # t/c of the tip section of the wing
 
               'Cht' : 0.6, # Horizontal tail volume coefficient
               'Lc_h' : 3.4, # Non-dimensional lever of the horizontal tail (lever/wing_mac)
@@ -359,7 +359,7 @@ def standard_airplane(name='crusair1'): # crusair 333
               },
 
               'x_nlg' : 5.766, # Longitudinal position of the nose landing gear [m]
-              'x_mlg' : 34.121972652707576, # Longitudinal position of the main landing gear [m]
+              'x_mlg' : 33.93901083062231, # Longitudinal position of the main landing gear [m]
               'y_mlg' : 5.9, # Lateral position of the main landing gear [m]
               'z_lg' : -5.8, # Vertical position of the landing gear [m]
               'x_tailstrike' : 49.5, # Longitudinal position of critical tailstrike point [m]
