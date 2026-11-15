@@ -46,8 +46,8 @@ flist = []
 # MODEL EVALUATION
 
 def run_airplane(x, print_log=False, plot=False):
-    """Configures crusair1 with design vector x and runs analyze."""
-    airplane = standard_airplane('crusair1')
+    """Configures crusair_opt with design vector x and runs analyze."""
+    airplane = standard_airplane('crusair_opt')
     inp = airplane['inputs']
     inp['S_w'] = x[0]
     inp['AR_w'] = x[1]
