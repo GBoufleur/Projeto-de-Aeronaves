@@ -96,27 +96,40 @@ for i, name in enumerate(var_names):
 
 # =========================================
 # 2. TORNADO CHART: -5% VS +5% 
-W0_minus = np.zeros(len(var_names))
-W0_plus = np.zeros(len(var_names))
+extra_tornado_vars = ['altitude_cruise', 'Lc_h', 'Lb_v', 'c_flap_c_wing', 'b_flap_b_wing']
+tornado_vars = var_names + extra_tornado_vars
+W0_minus = np.zeros(len(tornado_vars))
+W0_plus = np.zeros(len(tornado_vars))
 
-for i in range(len(var_names)):
-    xm = x_base.copy()
-    xp = x_base.copy()
-    xm[i] *= (1.0 - rel_step)
-    xp[i] *= (1.0 + rel_step)
-    _, W0_minus[i] = des_funcs(xm)
-    _, W0_plus[i] = des_funcs(xp)
+for i, name in enumerate(tornado_vars):
+    if i < len(var_names):
+        xm = x_base.copy()
+        xp = x_base.copy()
+        xm[i] *= (1.0 - rel_step)
+        xp[i] *= (1.0 + rel_step)
+        _, W0_minus[i] = des_funcs(xm)
+        _, W0_plus[i] = des_funcs(xp)
+    else:
+        for idx, factor in enumerate([1.0 - rel_step, 1.0 + rel_step]):
+            ap_t = standard_airplane('crusair1')
+            ap_t['inputs'][name] *= factor
+            analyze(ap_t, print_log=False, plot=False)
+            val = ap_t['thrust_matching']['W0'] / gravity
+            if idx == 0:
+                W0_minus[i] = val
+            else:
+                W0_plus[i] = val
 
 impact_range = np.abs(W0_plus - W0_minus)
 order = np.argsort(impact_range)
 
-fig, ax = plt.subplots(figsize=(9, 5.5))
-y_pos = np.arange(len(var_names))
+fig, ax = plt.subplots(figsize=(9, 6.5))
+y_pos = np.arange(len(tornado_vars))
 ax.barh(y_pos, W0_minus[order] - W0_star, left=W0_star, color='mediumslateblue', edgecolor='black', label='-5%')
 ax.barh(y_pos, W0_plus[order] - W0_star, left=W0_star, color='salmon', edgecolor='black', label='+5%')
 ax.axvline(W0_star, color='black', linewidth=1.2)
 ax.set(yticks=y_pos, 
-       yticklabels=[var_names[i] for i in order],
+       yticklabels=[tornado_vars[i] for i in order],
        xlabel='MTOW [kgf]', 
        title='Tornado Chart: -5% vs +5% values')
 
