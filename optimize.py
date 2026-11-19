@@ -1,4 +1,5 @@
 import time
+from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import differential_evolution, NonlinearConstraint
@@ -106,9 +107,19 @@ nonlinear_constraint = NonlinearConstraint(confun, lb, ub)
 
 maxiter = 200
 gen = [0]
+xk_gen = []
+fk_gen = []
 
 def progress_callback(*args, **kwargs):
     gen[0] += 1
+    if args and hasattr(args[0], 'x'):
+        x_best = np.asarray(args[0].x, dtype=float).copy()
+        f_best = float(args[0].fun) if np.isfinite(args[0].fun) else np.nan
+    else:
+        x_best = np.asarray(args[0], dtype=float).copy()
+        f_best = objfun(x_best)
+    xk_gen.append(x_best) # adicionei para pegar o melhor indivíduo ao invés do xlist e o flist
+    fk_gen.append(f_best)
     print(f'\rOtimização: {100 * gen[0] / maxiter:5.1f}% ({gen[0]}/{maxiter})', end='', flush=True)
 
 t0 = time.time()
@@ -119,7 +130,7 @@ result = differential_evolution(objfun, bounds,
                                 tol=1e-3,
                                 seed=42,
                                 polish=False,
-                                callback=progress_callback
+                                callback=progress_callback #adicionei soh para conseguir acompanhar a execucao
                                 )
 print()
 
@@ -153,28 +164,34 @@ for i, cname in enumerate(con_names):
 # =========================================
 # PLOTS
 
-x_history = np.array(xlist)
+outdir = Path(__file__).resolve().parent / 'results_optimization'
+outdir.mkdir(exist_ok=True)
 
-fig_vars, axes = plt.subplots(len(var_names), 1, figsize=(9, 2 * len(var_names)), sharex=True)
+x_history = np.array(xk_gen)
+generations = np.arange(1, len(xk_gen) + 1)
+
+fig_vars, axes = plt.subplots(4, 2, figsize=(12, 9), sharex=True)
+axes_flat = axes.T.ravel()
 for i, name in enumerate(var_names):
-    axes[i].plot(x_history[:, i], 'o-', markersize=2, color='tab:blue')
-    axes[i].set_ylabel(name, fontsize=9)
-    axes[i].grid(True, alpha=0.3)
+    axes_flat[i].plot(generations, x_history[:, i], 'o-', markersize=3, color='tab:blue')
+    axes_flat[i].set_ylabel(name, fontsize=9)
+    axes_flat[i].grid(True, alpha=0.3)
 
-axes[-1].set_xlabel('Número de Avaliações', fontsize=10)
-fig_vars.suptitle('Differential Evolution History: Design Variables', fontsize=14, y=0.99)
+axes[-1, 0].set_xlabel('Geração', fontsize=10)
+axes[-1, 1].set_xlabel('Geração', fontsize=10)
+fig_vars.suptitle('Convergência das Variáveis de Projeto (Melhor por Geração)', fontsize=14, y=0.99)
 fig_vars.tight_layout()
-fig_vars.savefig('results_optimization/design_variables_history.png', dpi=200)
+fig_vars.savefig(outdir / 'design_variables_history.png', dpi=200)
 plt.show()
 
 fig_obj, ax = plt.subplots(figsize=(9, 4.5))
-ax.plot(flist, 'o-', color='crimson', markersize=3)
+ax.plot(generations, fk_gen, 'o-', color='crimson', markersize=3)
 ax.set_ylabel('W0 [t]', fontsize=10)
-ax.set_xlabel('Número de Avaliações', fontsize=10)
-ax.set_title('Convergência da Função Objetivo (MTOW)', fontsize=13)
+ax.set_xlabel('Geração', fontsize=10)
+ax.set_title('Convergência da Função Objetivo (Melhor por Geração)', fontsize=13)
 ax.grid(True, alpha=0.3)
 fig_obj.tight_layout()
-fig_obj.savefig('results_optimization/objective_function_history.png', dpi=200)
+fig_obj.savefig(outdir / 'objective_function_history.png', dpi=200)
 plt.show()
 
 # Analyze and plot the optimal airplane
